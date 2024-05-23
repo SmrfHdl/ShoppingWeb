@@ -16,19 +16,19 @@
         <div class="container">
             <div class="navbar">
                 <div class="logo">
-                    <a href="index.html"><img src="../static/images/logo.png" width="125px"></a>
+                    <a href="{{ url_for('views.home') }}"><img src="../static/images/logo.png" width="125px"></a>
                 </div>
                <nav>
                     <ul id="MenuItems">
-                        <li><a href="index.html">Home</a></li>
-                         <li><a href="products.html">Products</a></li>
-                         <li><a href="about.html">About</a></li>
-                         <li><a href="contact.html">Contact</a></li>
-                         <li><a href="account.html">Account</a></li>
+                        <li><a href="{{ url_for('views.home') }}">Home</a></li>
+                         <li><a href="{{ url_for('products.home') }}">Products</a></li>
+                         <li><a href="{{ url_for('about.home') }}">About</a></li>
+                         <li><a href="{{ url_for('contact.home') }}">Contact</a></li>
+                         <li><a href="{{ url_for('account.home') }}">Account</a></li>
 
                     </ul>
                 </nav>
-                <a href="cart.html"><img src="../static/images/cart.png" width="30px" height="30px"></a>
+                <a href="{{ url_for('cart.home') }}"><img src="../static/images/cart.png" width="30px" height="30px"></a>
                 <img src="../static/images/menu.png" class="menu-icon" onClick="menutoggle()" >
             </div>
            
@@ -53,8 +53,8 @@
             <!--<h2 class="title" >Featured Products</h2>-->
             <div class="row">
                     <div class="col-4" id="product1">
-                        <a href="products-details.html"><img src="../static/images/product-11.jpg"></a>
-                        <a href="products-details.html"><h4>Downshifter Sports Shoes</h4></a>
+                        <a href="{{ url_for('pd.home') }}s"><img src="../static/images/product-11.jpg"></a>
+                        <a href="{{ url_for('pd.home') }}s"><h4>Downshifter Sports Shoes</h4></a>
                         <div class="rating">
                             
                             <i class="fa fa-star" ></i>
@@ -66,7 +66,7 @@
                         <p>$50.00</p>
                     </div>
                     <div class="col-4" id="product2">
-                        <a href="products-details.html"><img src="../static/images/product-2.jpg"></a>
+                        <a href="{{ url_for('pd.home') }}s"><img src="../static/images/product-2.jpg"></a>
                         <h4>Lace-Up Running Shoes</h4>
                         <div class="rating">
                             <i class="fa fa-star" ></i>
@@ -78,7 +78,7 @@
                         <p>$35.00</p>
                     </div>
                     <div class="col-4" id="product3">
-                        <a href="products-details.html"><img src="../static/images/product-3.jpg"></a>
+                        <a href="{{ url_for('pd.home') }}s"><img src="../static/images/product-3.jpg"></a>
                         <h4>Lace Fastening Shoes</h4>
                         <div class="rating">
                             <i class="fa fa-star" ></i>
@@ -90,7 +90,7 @@
                         <p>$15.00</p>
                     </div>
                     <div class="col-4" id="product4">
-                        <a href="products-details.html"><img src="../static/images/product-10.jpg"></a>
+                        <a href="{{ url_for('pd.home') }}s"><img src="../static/images/product-10.jpg"></a>
                         <h4>Flat Lace-Fastening Shoes</h4>
                         <div class="rating">
                             <i class="fa fa-star" ></i>
@@ -107,7 +107,7 @@
             
             <div class="row">
                     <div class="col-4" id="product5">
-                        <a href="products-details.html"><img src="../static/images/product-5.jpg"></a>
+                        <a href="{{ url_for('pd.home') }}s"><img src="../static/images/product-5.jpg"></a>
                         <h4>Flat Heel gray hoes</h4>
                         <div class="rating">
                             
@@ -120,7 +120,7 @@
                         <p>$50.00</p>
                     </div>
                     <div class="col-4" id="product6">
-                        <a href="products-details.html"><img src="../static/images/product-3.jpg"></a>
+                        <a href="{{ url_for('pd.home') }}s"><img src="../static/images/product-3.jpg"></a>
                         <h4>Lace-Fastening black Shoes</h4>
                         <div class="rating">
                             <i class="fa fa-star" ></i>
@@ -132,7 +132,7 @@
                         <p>$21.00</p>
                     </div>
                     <div class="col-4" id="product7">
-                        <a href="products-details.html"><img src="../static/images/product-7.jpg"></a>
+                        <a href="{{ url_for('pd.home') }}s"><img src="../static/images/product-7.jpg"></a>
                         <h4>HRX Men's cotton socks</h4>
                         <div class="rating">
                             <i class="fa fa-star" ></i>
@@ -144,7 +144,7 @@
                         <p>$09.00</p>
                     </div>
                     <div class="col-4" id="product8">
-                        <a href="products-details.html"><img src="../static/images/product-2.jpg"></a>
+                        <a href="{{ url_for('pd.home') }}s"><img src="../static/images/product-2.jpg"></a>
                         <h4>Lace-Up Running Shoes</h4>
                         <div class="rating">
                             <i class="fa fa-star" ></i>
@@ -159,7 +159,7 @@
             <!--new row for the latest product-->
                 <div class="row">
                     <div class="col-4" id="product9">
-                        <a href="products-details.html"><img src="../static/images/product-7.jpg"></a>
+                        <a href="{{ url_for('pd.home') }}s"><img src="../static/images/product-7.jpg"></a>
                         <h4>HRX cotton socks</h4>
                         <div class="rating">
                             
@@ -172,7 +172,7 @@
                         <p>$10.00</p>
                     </div>
                     <div class="col-4" id="product10">
-                        <a href="products-details.html"><img src="../static/images/product-10.jpg"></a>
+                        <a href="{{ url_for('pd.home') }}s"><img src="../static/images/product-10.jpg"></a>
                         <h4>Flat Lace-Fastening Shoes</h4>
                         <div class="rating">
                             <i class="fa fa-star" ></i>
@@ -184,7 +184,7 @@
                         <p>$48.00</p>
                     </div>
                     <div class="col-4" id="product11">
-                        <a href="products-details.html"><img src="../static/images/product-11.jpg"></a>
+                        <a href="{{ url_for('pd.home') }}s"><img src="../static/images/product-11.jpg"></a>
                         <h4>Loafers Men (Gray)</h4>
                         <div class="rating">
                             <i class="fa fa-star-o" ></i>
@@ -196,7 +196,7 @@
                         <p>$15.00</p>
                     </div>
                     <div class="col-4" id="product12">
-                        <a href="products-details.html"><img src="../static/images/product-12.jpg"></a>
+                        <a href="{{ url_for('pd.home') }}s"><img src="../static/images/product-12.jpg"></a>
                         <h4>Lace-Fastening white Shoes</h4>
                         <div class="rating">
                             <i class="fa fa-star" ></i>

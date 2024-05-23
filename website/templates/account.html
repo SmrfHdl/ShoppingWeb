@@ -11,31 +11,66 @@
         <!--added a cdn link by searching font awesome4 cdn and getting this link from https://www.bootstrapcdn.com/fontawesome/ this url*/-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+        <style>
+            .alert {
+              width: 100%; /* Make the alert span the full width of the screen */
+            }
+            
+            .alert-danger {
+              background-color: #FFC0CB; /* Change the background color to pink */
+            }
+            
+            .alert-success {
+              background-color: #90EE90; /* Change the background color to light green */
+            }
+            </style>
+            
     </head>
     <body>
         <!--<div class ="header">-->
         <div class="container">
             <div class="navbar">
                 <div class="logo">
-                    <a href="index.html"><img src="../static/images/logo.png" width="125px"></a>
+                    <a href="{{ url_for('views.home') }}"><img src="../static/images/logo.png" width="125px"></a>
                 </div>
                  <nav>
                     <ul id="MenuItems">
-                        <li><a href="index.html">Home</a></li>
-                         <li><a href="products.html">Products</a></li>
-                         <li><a href="about.html">About</a></li>
-                         <li><a href="contact.html">Contact</a></li>
-                         <li><a href="account.html">Account</a></li>
+                        <li><a href="{{ url_for('views.home') }}">Home</a></li>
+                         <li><a href="{{ url_for('products.home') }}">Products</a></li>
+                         <li><a href="{{ url_for('about.home') }}">About</a></li>
+                         <li><a href="{{ url_for('contact.home') }}">Contact</a></li>
+                         <li><a href="{{ url_for('account.home') }}">Account</a></li>
 
                     </ul>
                 </nav>
-                <a href="cart.html"><img src="../static/images/cart.png" width="30px" height="30px"></a>
+                <a href="{{ url_for('cart.home') }}"><img src="../static/images/cart.png" width="30px" height="30px"></a>
                 <img src="../static/menu.png" class="menu-icon" onClick="menutoggle()" >
             </div>
            
         </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        {% if category == 'error' %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        {% else %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
     <!--</div>-->
-    
         
         <!------------------------------ account-page details------------------------------>
 
@@ -52,26 +87,26 @@
                                 <span onclick="register()">Register</span>
                                 <hr id="Indicator">
                             </div>
-                            <form id="LoginForm">
-                                <input type="text" placeholder="username">
-                                <input type="password" placeholder="password">
+                            <form id="LoginForm" method="POST">
+                                <input type="text" name="username" placeholder="username">
+                                <input type="password" name="password" placeholder="password">
+                                <input type="hidden" name="action" value="login">
                                 <button type="submit" class="btn">Login</button>
                                 <a href="">Forgot password</a>
                             </form>
                             
-                            <form id="RegForm">
-                                <input type="text" placeholder="username">
-                                <input type="email" placeholder="email">
-                                <input type="password" placeholder="password">
+                            <form id="RegForm" method="POST">
+                                <input type="text" name="username" placeholder="username">
+                                <input type="email" name="email" placeholder="email">
+                                <input type="password" name="password" placeholder="password">
+                                <input type="hidden" name="action" value="register">
                                 <button type="submit" class="btn">Register</button>
                             </form>
                         </div>
                     </div>
                 </div>
-                    
             </div>
-        </div>
-        
+        </div> 
        
         <!----------------------------------footer------------------------------------->
         <div class ="footer">
@@ -150,6 +185,9 @@
                 Indicator.style.transform="translateX(0px)";
             }
         </script>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>    
 
     </body>
 </html>
