@@ -6,18 +6,18 @@ def create_app():
 
     from .views import views
     from .account import account_bp
-    from .about import about
-    from .cart import cart
-    from .contact import contact
-    from .pd import pd
-    from .products import products
+    from .about import about_bp
+    from .cart import cart_bp
+    from .contact import contact_bp
+    from .pd import pd_bp
+    from .products import products_bp
 
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(account_bp, url_prefix='/')
-    app.register_blueprint(about, url_prefix='/')
-    app.register_blueprint(cart, url_prefix='/')
-    app.register_blueprint(contact, url_prefix='/')
-    app.register_blueprint(pd, url_prefix='/')
-    app.register_blueprint(products, url_prefix='/')
+    app.register_blueprint(about_bp, url_prefix='/')
+    app.register_blueprint(cart_bp, url_prefix='/')
+    app.register_blueprint(contact_bp, url_prefix='/')
+    app.register_blueprint(pd_bp, url_prefix='/')
+    app.register_blueprint(products_bp, url_prefix='/')
 
     return app

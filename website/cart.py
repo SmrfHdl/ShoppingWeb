@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template
 
-cart = Blueprint('cart', __name__)
+cart_bp = Blueprint('cart', __name__)
 
-@cart.route('/')
+@cart_bp.route('/cart')
 def home():
     return render_template("cart.html")
