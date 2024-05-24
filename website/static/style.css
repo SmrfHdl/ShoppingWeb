@@ -170,8 +170,11 @@ small{
 }
 .testimonial .col-3 img{
     width:50px;
+    height:50px;
     margin-top: 20px;
     border-radius: 50%;/*square images converted to round shape box*/
+    object-fit: cover; /* Đảm bảo rằng ảnh không bị méo */
+    object-position: center; /* Căn giữa ảnh */
 }
 .testimonial .col-3:hover{
     transform: translateY(-10px);
