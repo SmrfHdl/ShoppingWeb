@@ -20,12 +20,11 @@
                 </div>
                <nav>
                     <ul id="MenuItems">
-                        <li><a href="{{ url_for('views.home') }}">Home</a></li>
-                         <li><a href="{{ url_for('products.home') }}">Products</a></li>
-                         <li><a href="{{ url_for('about.home') }}">About</a></li>
-                         <li><a href="{{ url_for('contact.home') }}">Contact</a></li>
-                         <li><a href="{{ url_for('account.home') }}">Account</a></li>
-
+                        <li><a href="{{ url_for('views.home') }}">Trang chủ</a></li>
+                         <li><a href="{{ url_for('products.home') }}">Sản phẩm</a></li>
+                         <li><a href="{{ url_for('about.home') }}">Thông tin</a></li>
+                         <li><a href="{{ url_for('contact.home') }}">Liên hệ</a></li>
+                         <li><a href="{{ url_for('account.home') }}">Tài khoản</a></li>
                     </ul>
                 </nav>
                 <a href="{{ url_for('cart.home') }}"><img src="../static/images/cart.png" width="30px" height="30px"></a>
@@ -39,13 +38,12 @@
         <!------------------------------ Products------------------------------>
         <div class="small-container">
             <div class="row row-2">
-                <h2>All Products</h2>
+                <h2>Tất cả sản phẩm</h2>
                 <select>
-                    <option>Default sorting</option>
-                    <option>Short by price</option>
-                    <option>Short by popularity</option>
-                    <option>Short by rating</option>
-                    <option>Short by sale</option>
+                    <option>Mặc định</option>
+                    <option>Xếp theo giá</option>
+                    <option>Xếp theo mức độ phổ biến</option>
+                    <option>Xếp theo đánh giá</option>
                 </select>
             </div>
             
