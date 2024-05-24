@@ -1,15 +1,28 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from os import path
+from flask_login import LoginManager
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
 
 db = SQLAlchemy()
 DB_NAME = "database.db"
+
+class UserModelView(ModelView):
+    column_list = ('id', 'email', 'password','username')
+
+class ProductModelView(ModelView):
+    column_list = ('id', 'name', 'price','description', 'image')
+
+class CartModelView(ModelView):
+    column_list = ('id', 'user_id', 'total_quantity', 'total_price')
 
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'alonewolfs'
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     db.init_app(app)
+    admin = Admin(app)
 
     from .views import views
     from .account import account_bp
@@ -29,7 +42,19 @@ def create_app():
 
     from .models import User, Product, Cart
 
+    admin.add_view(UserModelView(User, db.session))
+    admin.add_view(ProductModelView(Product, db.session))
+    admin.add_view(CartModelView(Cart, db.session, endpoint='admin_cart'))
+
     create_database(app)
+
+    # login_manager = LoginManager()
+    # login_manager.login_view = 'account.home'
+    # login_manager.init_app(app)
+
+    # @login_manager.user_loader
+    # def login_manager(id):
+    #     return User.query.get(int(id))
 
     return app
 
