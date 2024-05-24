@@ -1,1 +1,86 @@
-https://github.com/hieu7404
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ - AWS</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="{{ url_for('views.home') }}"><img src="../static/images/logo.png" width="125px"></a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="{{ url_for('views.home') }}">Trang chủ</a></li>
+                    <li><a href="{{ url_for('products.home') }}">Sản phẩm</a></li>
+                    <li><a href="{{ url_for('about.home') }}">Thông tin</a></li>
+                    <li><a href="{{ url_for('contact.home') }}">Liên hệ</a></li>
+                    <li><a href="{{ url_for('account.home') }}">Tài khoản</a></li>
+                </ul>
+            </nav>
+            <a href="{{ url_for('cart.home') }}"><img src="../static/images/cart.png" width="30px" height="30px"></a>
+            <img src="../static/images/menu.png" class="menu-icon" onClick="menutoggle()">
+        </div>
+    </div>
+
+    <div class="small-container contact-page">
+        <div class="row">
+            <div class="col-2">
+                <img src="../static/images/contact-image.jpg" width="100%">
+            </div>
+            <div class="col-2">
+                <div class="contact-form">
+                    <h2>Liên hệ với chúng tôi</h2>
+                    <form action="/submit_contact" method="POST">
+                        <div class="input-group">
+                            <label for="name">Họ và Tên</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="message">Lời nhắn</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Gửi</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!----------------------------------footer-------------------------------------->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-2">
+                    <img src="../static/images/logo-white.png">
+                    <p>Thể thao không chỉ là một hoạt động, mà còn là lối sống.</p>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Follow us</h3>
+                    <ul>
+                        <li><a href="https://github.com/SmrfHdl" target="_blank">Phạm Văn Trường</a></li>
+                        <li><a href="https://github.com/UETER2226" target="_blank">Đỗ Quang Dũng</a></li>
+                        <li><a href="https://github.com/hieu7404" target="_blank">Lê Trung Hiếu</a></li>
+                        <li><a href="https://github.com/angWindy" target="_blank">Trần An Thắng</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">Alone Wolf Team</p>
+        </div>
+    </div>
+</body>
+
+</html>

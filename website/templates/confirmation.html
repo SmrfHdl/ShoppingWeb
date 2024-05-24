@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thông tin - AWS</title>
+    <title>Xác nhận đơn hàng - AWS</title>
     <link rel="stylesheet" href="../static/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
@@ -31,20 +31,15 @@
         </div>
     </div>
 
-    <div class="small-container about-page">
-        <div class="row">
-            <div class="col-2">
-                <img src="../static/images/about-image.jpg" width="100%">
-            </div>
-            <div class="col-2">
-                <h2>Về chúng tôi</h2>
-                <p>Chúng tôi là một đội ngũ đam mê thể thao và công nghệ, với mục tiêu mang đến những sản phẩm và dịch vụ tốt nhất cho khách hàng. Tại AWS, chúng tôi tin rằng thể thao không chỉ là một hoạt động, mà còn là một lối sống. Chúng tôi luôn nỗ lực không ngừng để đem đến những trải nghiệm tuyệt vời nhất cho khách hàng của mình.<br><br></p>
-                <h3>Sứ mệnh của chúng tôi</h3>
-                <p>Sứ mệnh của chúng tôi là cung cấp các sản phẩm và dịch vụ chất lượng cao, đáp ứng nhu cầu của khách hàng và góp phần nâng cao chất lượng cuộc sống thông qua thể thao.<br><br></p>
-                <h3>Tầm nhìn của chúng tôi</h3>
-                <p>Chúng tôi hướng đến trở thành thương hiệu hàng đầu trong lĩnh vực thể thao và công nghệ, không ngừng đổi mới và sáng tạo để mang lại giá trị bền vững cho khách hàng và cộng đồng.<br><br><br></p>
-            </div>
+    <div class="small-container confirmation-page">
+        <p><br><p>
+        <h2>Cảm ơn bạn đã mua hàng!</h2>
+        <div class="confirmation-details">
+            <p><br>Đơn hàng của bạn đã được xử lý thành công.</p>
+            <p>Một email xác nhận đã được gửi tới địa chỉ email của bạn.</p>
         </div>
+        <a href="{{ url_for('products.home') }}" class="btn">Tiếp tục mua sắm</a>
+        <p><br><br><br><br><br><br><br><p>
     </div>
 
     <!----------------------------------footer-------------------------------------->
