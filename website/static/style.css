@@ -76,7 +76,7 @@ p{
     background: #563434;
 }
 .header{
-    background: radial-gradient(#fff, #82d895);
+    background-image: url('images/sky.jpg');
 }
 .header .row{
     margin-top: 0px;
@@ -145,7 +145,8 @@ h4{
 
 /*-----------------------offer -----------------------*/
 .offer{
-    background: radial-gradient(#fff, #82d895);
+    /* background: radial-gradient(#fff, #4aa4d8); */
+    background-image: url('images/sky.jpg');
     margin-top: 80px;
     padding: 30px 0;
 }
@@ -170,8 +171,11 @@ small{
 }
 .testimonial .col-3 img{
     width:50px;
+    height:50px;
     margin-top: 20px;
     border-radius: 50%;/*square images converted to round shape box*/
+    object-fit: cover; /* Đảm bảo rằng ảnh không bị méo */
+    object-position: center; /* Căn giữa ảnh */
 }
 .testimonial .col-3:hover{
     transform: translateY(-10px);
@@ -457,14 +461,15 @@ th:last-child{
 }
 
 
-        /*------------------------------ account-page ------------------------------*/
+/*------------------------------ account-page ------------------------------*/
 .account-page{
     padding: 50px 0;
-    background: radial-gradient(#fff, #82d895);
+    /* background: radial-gradient(#fff, #82d895); */
+    background-image: url('images/sky.jpg');
 }
 .form-container{
     background: #fff;
-    width:300px;
+    width: 300px;
     height: 400px;
     position: relative;
     text-align: center;
@@ -476,11 +481,11 @@ th:last-child{
 
 .form-container span{
     font-weight: bold;
-    padding: 0 10px;
+    padding: 0 15px;
     color: #555;
     cursor: pointer;
-    width: 100px;
-    display: inline-block;
+    text-align: center;
+    flex: 1;
 }
 
 .form-btn{
@@ -528,7 +533,81 @@ form a{
     background: #ff523b;
     height: 3px;
     margin-top: 8px;
-    transform: translateX(100px);
+    transform: translateX(125px);
     transition: transform 1s;
+}
 
+/*------------------------------ about-page ------------------------------*/
+.about-page {
+    padding: 1px 0;
+}
+
+.about-page .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.about-page .col-2 {
+    flex: 1;
+    padding: 20px;
+}
+
+.about-page .col-2 img {
+    width: 70%; /* Adjust the width as needed */
+    border-radius: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-page .col-2 h3 {
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+.about-page .col-2 p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.about-page .col-2-text {
+    margin-left: 50px; /* Increase this value to add more space */
+}
+
+@media (max-width: 768px) {
+    .about-page .row {
+        flex-direction: column;
+    }
+
+    .about-page .col-2 img {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .about-page .col-2-text {
+        margin-left: 0;
+    }
+}
+
+
+/*------------------------------ contact-page ------------------------------*/
+.admin-section .admin {
+    margin-bottom: 20px;
+}
+
+.admin-section h3 {
+    margin: 0;
+}
+
+.admin-section p {
+    margin: 5px 0;
+}
+
+.contact-page .col-2 img {
+    width: 70%; /* Adjust the width as needed */
+    border-radius: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
