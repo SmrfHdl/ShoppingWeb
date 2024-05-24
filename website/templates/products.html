@@ -63,11 +63,9 @@
         {% for product in products %}
         <div class="col-4" id="product_items">
           <a href="{{ url_for('pd.home') }}s"
-            ><img src="{{ product['image'] }}"
+            ><img src="{{ product.image }}"
           /></a>
-          <a href="{{ url_for('pd.home') }}s"
-            ><h4>Downshifter Sports Shoes</h4></a
-          >
+          <a href="{{ url_for('pd.home') }}s"><h4>{{ product.name }}</h4></a>
           <div class="rating">
             <i class="fa fa-star"></i>
             <i class="fa fa-star"></i>
@@ -75,17 +73,9 @@
             <i class="fa fa-star-half-o"></i>
             <i class="fa fa-star-o"></i>
           </div>
-          <p>${{ product['price'] }}</p>
+          <p>${{ product.price }}</p>
         </div>
         {% endfor %}
-      </div>
-
-      <div class="page-btn">
-        <span>1</span>
-        <span>2</span>
-        <span>3</span>
-        <span>4</span>
-        <span>&#8594;</span>
       </div>
     </div>
 

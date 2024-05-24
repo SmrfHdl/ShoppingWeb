@@ -11,9 +11,12 @@ class User(db.Model, UserMixin):
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(150), unique=True)
-    price = db.Column(db.Integer)
-    description = db.Column(db.String(500))
-    image = db.Column(db.String(150))
+    price = db.Column(db.Integer, nullable=False)
+    rating = db.Column(db.Float, nullable=False)
+    review_count = db.Column(db.Integer)
+    description = db.Column(db.String(1000))
+    image = db.Column(db.String(150), nullable=False)
+    category = db.Column(db.String(150), nullable=False)
 
 class Cart(db.Model):
     id = db.Column(db.Integer, primary_key=True)
