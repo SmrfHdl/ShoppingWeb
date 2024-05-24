@@ -539,7 +539,7 @@ form a{
 
 /*------------------------------ about-page ------------------------------*/
 .about-page {
-    padding: 50px 0;
+    padding: 1px 0;
 }
 
 .about-page .row {
@@ -554,7 +554,7 @@ form a{
 }
 
 .about-page .col-2 img {
-    width: 90%; /* Adjust the width as needed */
+    width: 70%; /* Adjust the width as needed */
     border-radius: 10px;
     display: block;
     margin-left: auto;
@@ -567,12 +567,12 @@ form a{
 }
 
 .about-page .col-2 p {
-    line-height: 1.8;
+    line-height: 1.6;
     margin-bottom: 20px;
 }
 
 .about-page .col-2-text {
-    margin-left: 40px; /* Increase this value to add more space */
+    margin-left: 50px; /* Increase this value to add more space */
 }
 
 @media (max-width: 768px) {
@@ -588,4 +588,26 @@ form a{
     .about-page .col-2-text {
         margin-left: 0;
     }
+}
+
+
+/*------------------------------ contact-page ------------------------------*/
+.admin-section .admin {
+    margin-bottom: 20px;
+}
+
+.admin-section h3 {
+    margin: 0;
+}
+
+.admin-section p {
+    margin: 5px 0;
+}
+
+.contact-page .col-2 img {
+    width: 70%; /* Adjust the width as needed */
+    border-radius: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
