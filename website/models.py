@@ -14,3 +14,9 @@ class Product(db.Model):
     price = db.Column(db.Integer)
     description = db.Column(db.String(500))
     image = db.Column(db.String(150))
+
+class Cart(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    total_quantity = db.Column(db.Integer, nullable=False, default=0)
+    total_price = db.Column(db.Integer, nullable=False, default=0)

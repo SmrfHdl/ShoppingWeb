@@ -1,264 +1,147 @@
 <!DOCTYPE html>
 <html>
-    
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width-device-width, initial-scale=1.0">
-        <title>Sản phẩm - AWS</title>
-        <link rel="stylesheet" href="../static/style.css">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-        <!--added a cdn link by searching font awesome4 cdn and getting this link from https://www.bootstrapcdn.com/fontawesome/ this url*/-->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
-    <body>
-        <!--<div class ="header">-->
-        <div class="container">
-            <div class="navbar">
-                <div class="logo">
-                    <a href="{{ url_for('views.home') }}"><img src="../static/images/logo.png" width="125px"></a>
-                </div>
-               <nav>
-                    <ul id="MenuItems">
-                        <li><a href="{{ url_for('views.home') }}">Trang chủ</a></li>
-                         <li><a href="{{ url_for('products.home') }}">Sản phẩm</a></li>
-                         <li><a href="{{ url_for('about.home') }}">Thông tin</a></li>
-                         <li><a href="{{ url_for('contact.home') }}">Liên hệ</a></li>
-                         <li><a href="{{ url_for('account.home') }}">Tài khoản</a></li>
-                    </ul>
-                </nav>
-                <a href="{{ url_for('cart.home') }}"><img src="../static/images/cart.png" width="30px" height="30px"></a>
-                <img src="../static/images/menu.png" class="menu-icon" onClick="menutoggle()" >
-            </div>
-           
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width-device-width, initial-scale=1.0" />
+    <title>Sản phẩm - AWS</title>
+    <link rel="stylesheet" href="../static/style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!--added a cdn link by searching font awesome4 cdn and getting this link from https://www.bootstrapcdn.com/fontawesome/ this url*/-->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <!--<div class ="header">-->
+    <div class="container">
+      <div class="navbar">
+        <div class="logo">
+          <a href="{{ url_for('views.home') }}"
+            ><img src="../static/images/logo.png" width="125px"
+          /></a>
         </div>
+        <nav>
+          <ul id="MenuItems">
+            <li><a href="{{ url_for('views.home') }}">Trang chủ</a></li>
+            <li><a href="{{ url_for('products.home') }}">Sản phẩm</a></li>
+            <li><a href="{{ url_for('about.home') }}">Thông tin</a></li>
+            <li><a href="{{ url_for('contact.home') }}">Liên hệ</a></li>
+            <li><a href="{{ url_for('account.home') }}">Tài khoản</a></li>
+          </ul>
+        </nav>
+        <a href="{{ url_for('cart.home') }}"
+          ><img src="../static/images/cart.png" width="30px" height="30px"
+        /></a>
+        <img
+          src="../static/images/menu.png"
+          class="menu-icon"
+          onClick="menutoggle()"
+        />
+      </div>
+    </div>
     <!--</div>-->
-    
-        
-        <!------------------------------ Products------------------------------>
-        <div class="small-container">
-            <div class="row row-2">
-                <h2>Tất cả sản phẩm</h2>
-                <select>
-                    <option>Mặc định</option>
-                    <option>Xếp theo giá</option>
-                    <option>Xếp theo mức độ phổ biến</option>
-                    <option>Xếp theo đánh giá</option>
-                </select>
-            </div>
-            
-            
-            <!--<h2 class="title" >Featured Products</h2>-->
-            <div class="row">
-                    <div class="col-4" id="product1">
-                        <a href="{{ url_for('pd.home') }}s"><img src="../static/images/product-11.jpg"></a>
-                        <a href="{{ url_for('pd.home') }}s"><h4>Downshifter Sports Shoes</h4></a>
-                        <div class="rating">
-                            
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star-half-o" ></i>
-                            <i class="fa fa-star-o" ></i>
-                        </div>
-                        <p>$50.00</p>
-                    </div>
-                    <div class="col-4" id="product2">
-                        <a href="{{ url_for('pd.home') }}s"><img src="../static/images/product-2.jpg"></a>
-                        <h4>Lace-Up Running Shoes</h4>
-                        <div class="rating">
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star-half-o" ></i>
-                        </div>
-                        <p>$35.00</p>
-                    </div>
-                    <div class="col-4" id="product3">
-                        <a href="{{ url_for('pd.home') }}s"><img src="../static/images/product-3.jpg"></a>
-                        <h4>Lace Fastening Shoes</h4>
-                        <div class="rating">
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star-o" ></i>
-                        </div>
-                        <p>$15.00</p>
-                    </div>
-                    <div class="col-4" id="product4">
-                        <a href="{{ url_for('pd.home') }}s"><img src="../static/images/product-10.jpg"></a>
-                        <h4>Flat Lace-Fastening Shoes</h4>
-                        <div class="rating">
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star-o" ></i>
-                            <i class="fa fa-star-o" ></i>
-                        </div>
-                        <p>$48.00</p>
-                    </div>  
-                </div>
-            
-            <!-------------- new row------------------>
-            
-            <div class="row">
-                    <div class="col-4" id="product5">
-                        <a href="{{ url_for('pd.home') }}s"><img src="../static/images/product-5.jpg"></a>
-                        <h4>Flat Heel gray hoes</h4>
-                        <div class="rating">
-                            
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star-half-o" ></i>
-                            <i class="fa fa-star-o" ></i>
-                        </div>
-                        <p>$50.00</p>
-                    </div>
-                    <div class="col-4" id="product6">
-                        <a href="{{ url_for('pd.home') }}s"><img src="../static/images/product-3.jpg"></a>
-                        <h4>Lace-Fastening black Shoes</h4>
-                        <div class="rating">
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star-half-o" ></i>
-                        </div>
-                        <p>$21.00</p>
-                    </div>
-                    <div class="col-4" id="product7">
-                        <a href="{{ url_for('pd.home') }}s"><img src="../static/images/product-7.jpg"></a>
-                        <h4>HRX Men's cotton socks</h4>
-                        <div class="rating">
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star-o" ></i>
-                        </div>
-                        <p>$09.00</p>
-                    </div>
-                    <div class="col-4" id="product8">
-                        <a href="{{ url_for('pd.home') }}s"><img src="../static/images/product-2.jpg"></a>
-                        <h4>Lace-Up Running Shoes</h4>
-                        <div class="rating">
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star-o" ></i>
-                            <i class="fa fa-star-o" ></i>
-                        </div>
-                        <p>$35.00</p>
-                    </div>  
-                </div>
-            <!--new row for the latest product-->
-                <div class="row">
-                    <div class="col-4" id="product9">
-                        <a href="{{ url_for('pd.home') }}s"><img src="../static/images/product-7.jpg"></a>
-                        <h4>HRX cotton socks</h4>
-                        <div class="rating">
-                            
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star-half-o" ></i>
-                            <i class="fa fa-star-o" ></i>
-                        </div>
-                        <p>$10.00</p>
-                    </div>
-                    <div class="col-4" id="product10">
-                        <a href="{{ url_for('pd.home') }}s"><img src="../static/images/product-10.jpg"></a>
-                        <h4>Flat Lace-Fastening Shoes</h4>
-                        <div class="rating">
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star-half-o" ></i>
-                        </div>
-                        <p>$48.00</p>
-                    </div>
-                    <div class="col-4" id="product11">
-                        <a href="{{ url_for('pd.home') }}s"><img src="../static/images/product-11.jpg"></a>
-                        <h4>Loafers Men (Gray)</h4>
-                        <div class="rating">
-                            <i class="fa fa-star-o" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star-o" ></i>
-                        </div>
-                        <p>$15.00</p>
-                    </div>
-                    <div class="col-4" id="product12">
-                        <a href="{{ url_for('pd.home') }}s"><img src="../static/images/product-12.jpg"></a>
-                        <h4>Lace-Fastening white Shoes</h4>
-                        <div class="rating">
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star-o" ></i>
-                            <i class="fa fa-star-o" ></i>
-                        </div>
-                        <p>$21.00</p>
-                    </div>  
-                </div>
-            
-            <div class="page-btn">
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-                <span>4</span>
-                <span>&#8594;</span>
-            </div>
-            
+
+    <!------------------------------ Products------------------------------>
+    <div class="small-container">
+      <div class="row row-2">
+        <h2>Tất cả sản phẩm</h2>
+        <select>
+          <option>Mặc định</option>
+          <option>Xếp theo giá</option>
+          <option>Xếp theo mức độ phổ biến</option>
+          <option>Xếp theo đánh giá</option>
+        </select>
+      </div>
+
+      <!--<h2 class="title" >Featured Products</h2>-->
+      <div class="row">
+        {% for product in products %}
+        <div class="col-4" id="product_items">
+          <a href="{{ url_for('pd.home') }}s"
+            ><img src="{{ product['image'] }}"
+          /></a>
+          <a href="{{ url_for('pd.home') }}s"
+            ><h4>Downshifter Sports Shoes</h4></a
+          >
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-o"></i>
+            <i class="fa fa-star-o"></i>
+          </div>
+          <p>${{ product['price'] }}</p>
         </div>
-        
-        
-        <!----------------------------------footer-------------------------------------->
-        <div class ="footer">
-            <div class="container">
-                
-                <div class="row">
-                    <div class="footer-col-2">
-                        <img src="../static/images/logo-white.png">
-                        <p>Thể thao không chỉ là một hoạt động, mà còn là lối sống.</p>
-                    </div>
-                    <div class="footer-col-4">
-                        <h3>Follow us</h3>
-                       <ul>
-                        <li><a href="https://github.com/SmrfHdl" target="_blank">Phạm Văn Trường</a></li>
-                            <li><a href="https://github.com/UETER2226" target="_blank">Đỗ Quang Dũng</a></li>
-                            <li><a href="https://github.com/hieu7404" target="_blank">Lê Trung Hiếu</a></li>
-                            <li><a href="https://github.com/angWindy" target="_blank">Trần An Thắng</a></li>                    
-                        </ul>
-                    </div>
-                    
-                </div>
-                
-                <hr><!--horizontal line-->
-                <p class="copyright">Alone Wolf Team</p>
-                
-            </div>
+        {% endfor %}
+      </div>
+
+      <div class="page-btn">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>&#8594;</span>
+      </div>
+    </div>
+
+    <!----------------------------------footer-------------------------------------->
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="footer-col-2">
+            <img src="../static/images/logo-white.png" />
+            <p>Thể thao không chỉ là một hoạt động, mà còn là lối sống.</p>
+          </div>
+          <div class="footer-col-4">
+            <h3>Follow us</h3>
+            <ul>
+              <li>
+                <a href="https://github.com/SmrfHdl" target="_blank"
+                  >Phạm Văn Trường</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/UETER2226" target="_blank"
+                  >Đỗ Quang Dũng</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/hieu7404" target="_blank"
+                  >Lê Trung Hiếu</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/angWindy" target="_blank"
+                  >Trần An Thắng</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
-        
-        
-        <!-----------------------------------js for toggle menu------------------------------------------------>
-        <script>
-            var menuItems=document.getElementById("MenuItems");
-            
-            MenuItems.style.maxHeight="0px";
-            function menutoggle(){
-                if(MenuItems.style.maxHeight == "0px"){
-                    MenuItems.style.maxHeight="200px";
-                }
-                else{
-                    MenuItems.style.maxHeight="0px";
-                }
-            }
-        </script>
-    </body>
+
+        <hr />
+        <!--horizontal line-->
+        <p class="copyright">Alone Wolf Team</p>
+      </div>
+    </div>
+
+    <!-----------------------------------js for toggle menu------------------------------------------------>
+    <script>
+      var menuItems = document.getElementById("MenuItems");
+
+      MenuItems.style.maxHeight = "0px";
+      function menutoggle() {
+        if (MenuItems.style.maxHeight == "0px") {
+          MenuItems.style.maxHeight = "200px";
+        } else {
+          MenuItems.style.maxHeight = "0px";
+        }
+      }
+    </script>
+  </body>
 </html>
