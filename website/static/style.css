@@ -357,6 +357,19 @@ select:focus{
     color: #fff;
 }
 
+.product-item {
+    flex-basis: 23%; /* Điều chỉnh lại để tránh vấn đề khoảng cách giữa các cột */
+    min-width: 250px;
+    margin-bottom: 30px;
+    padding: 15px; /* Thêm padding nếu cần khoảng cách giữa các sản phẩm */
+}
+
+.product-item img {
+    width: 100%;
+    height: 250px; /* Chiều cao cố định của ảnh */
+    object-fit: contain; /* Cắt ảnh nếu vượt quá kích thước khung */
+}
+
 
 /*-----------------------single product details -----------------------*/
 
@@ -535,6 +548,15 @@ form a{
     margin-top: 8px;
     transform: translateX(125px);
     transition: transform 1s;
+}
+
+.alert {
+    width: 100%; /* Make the alert span the full width of the screen */
+    display: flex;
+    justify-content: space-between;
+  }
+.close {
+    font-size: 1.5em;
 }
 
 /*------------------------------ about-page ------------------------------*/
