@@ -70,3 +70,8 @@ def user_account():
 def logout():
     logout_user()
     return redirect(url_for('views.home'))
+
+@account_bp.route('/reset_password')
+@login_required
+def reset_password():
+    return render_template("reset_password.html")
