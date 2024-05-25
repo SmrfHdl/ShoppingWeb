@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for
 from .models import User, Cart
 from website import db
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_user, login_required, current_user
+from flask_login import login_user, login_required, current_user, logout_user
 
 
 account_bp = Blueprint('account', __name__)
@@ -21,7 +21,7 @@ def home():
             if user:
                 if check_password_hash(user.password, password):
                     flash('Logged in successfully!', category='success')
-                    # login_user(user, remember=True)
+                    login_user(user, remember=True)
                     return redirect(url_for('views.home'))               
                 else:
                     flash('Incorrect password, try again', category='error')
@@ -56,7 +56,12 @@ def home():
                 db.session.commit()
 
                 flash('Account created!', category='success')
+                login_user(user, remember=True)
                 return redirect(url_for('views.home'))
 
             print("Register data: ", request.form)
     return render_template("account.html")
+
+@account_bp.route('/user_account')
+def user_account():
+    return render_template("user_account.html")
