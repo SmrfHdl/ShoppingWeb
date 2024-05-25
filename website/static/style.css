@@ -430,6 +430,18 @@ select:focus{
     margin: 0 5px;
 }
 
+/* Truy vấn phương tiện cho màn hình nhỏ hơn 768px */
+@media (max-width: 768px) {
+  .row {
+    display: flex;
+    flex-direction: column;
+  }
+  .pagination {
+    order: 1; /* Đảm bảo phân trang được đặt sau các mục sản phẩm */
+    margin-top: 20px; /* Thêm khoảng trống phía trên phân trang */
+  }
+}
+
 
 /*-----------------------single product details -----------------------*/
 
