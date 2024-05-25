@@ -33,9 +33,7 @@
               <li><a href="{{ url_for('contact.home') }}">Contact</a></li>
               <li><a href="{{ url_for('account.home') }}">Account</a></li>
               <li>
-                <a href="{{ url_for('account.user_account') }}"
-                  >User Account</a
-                >
+                <a href="{{ url_for('account.user_account') }}">User Account</a>
               </li>
             </ul>
           </nav>
@@ -53,7 +51,8 @@
           <div class="col-2">
             <h1>Alone Wolf Sports</h1>
             <p>
-              Enter the world of sports with us - Where every step run is a win !
+              Enter the world of sports with us - Where every step run is a win
+              !
             </p>
             <a href="{{ url_for('products.home') }}" class="btn"
               >Explore now &#8594;</a
@@ -87,160 +86,50 @@
     <div class="small-container">
       <h2 class="title">Featured Products</h2>
       <div class="row">
-        <div class="col-4">
-          <a href=""><img src="../static/images/product-11.jpg" /></a>
-          <a href=""><h4>Downshifter Sports Shoes</h4></a>
+        {% for product in top_rated_products%}
+        <div class="col-4 product-item" id="product_items">
+          <a href="{{ url_for('pd.home', product_url=product.url) }}">
+            <img src="{{ product.image }}" />
+          </a>
+          <a href="{{ url_for('pd.home', product_url=product.url) }}">
+            <h4>{{ product.name }}</h4>
+          </a>
           <div class="rating">
-            <!--(before this added awesome4 cdn font link to the head)added a cdn link by searching font awesome4 icon and from the site  search the star entering the first option and getting a link of this fa-star*-->
+            {% for i in range(1, 6) %} {% if product.rating >= i %}
             <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
+            {% elif product.rating >= i - 0.5 %}
             <i class="fa fa-star-half-o"></i>
+            {% else %}
             <i class="fa fa-star-o"></i>
+            {% endif %} {% endfor %}
           </div>
-          <p>$50.00</p>
+          <p>${{ product.price }}</p>
         </div>
-        <div class="col-4">
-          <a href=""><img src="../static/images/product-2.jpg" /></a>
-          <h4>Lace-Up Running Shoes</h4>
-          <div class="rating">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-          </div>
-          <p>$35.00</p>
-        </div>
-        <div class="col-4">
-          <a href=""><img src="../static/images/product-3.jpg" /></a>
-          <h4>Lace Fastening Shoes</h4>
-          <div class="rating">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-o"></i>
-          </div>
-          <p>$15.00</p>
-        </div>
-        <div class="col-4">
-          <a href=""><img src="../static/images/product-10.jpg" /></a>
-          <h4>Flat Lace-Fastening Shoes</h4>
-          <div class="rating">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-star-o"></i>
-          </div>
-          <p>$48.00</p>
-        </div>
+        {% endfor %}
       </div>
 
-      <h2 class="title">Latest Products</h2>
+      <h2 class="title">Best-Selling Products</h2>
       <div class="row">
-        <div class="col-4">
-          <a href=""><img src="../static/images/product-5.jpg" /></a>
-          <h4>Flat Heel gray hoes</h4>
+        {% for product in top_reviewed_products%}
+        <div class="col-4 product-item" id="product_items">
+          <a href="{{ url_for('pd.home', product_url=product.url) }}">
+            <img src="{{ product.image }}" />
+          </a>
+          <a href="{{ url_for('pd.home', product_url=product.url) }}">
+            <h4>{{ product.name }}</h4>
+          </a>
           <div class="rating">
-            <!--(before this added awesome4 cdn font link to the head)added a cdn link by searching font awesome4 icon and from the site  search the star entering the first option and getting a link of this fa-star*-->
+            {% for i in range(1, 6) %} {% if product.rating >= i %}
             <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
+            {% elif product.rating >= i - 0.5 %}
             <i class="fa fa-star-half-o"></i>
+            {% else %}
             <i class="fa fa-star-o"></i>
+            {% endif %} {% endfor %}
           </div>
-          <p>$50.00</p>
+          <p>${{ product.price }}</p>
         </div>
-        <div class="col-4">
-          <a href=""><img src="../static/images/product-3.jpg" /></a>
-          <h4>Lace-Fastening black Shoes</h4>
-          <div class="rating">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-          </div>
-          <p>$21.00</p>
-        </div>
-        <div class="col-4">
-          <a href=""><img src="../static/images/product-7.jpg" /></a>
-          <h4>HRX Men's cotton socks</h4>
-          <div class="rating">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-o"></i>
-          </div>
-          <p>$09.00</p>
-        </div>
-        <div class="col-4">
-          <a href=""><img src="../static/images/product-2.jpg" /></a>
-          <h4>Lace-Up Running Shoes</h4>
-          <div class="rating">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-star-o"></i>
-          </div>
-          <p>$35.00</p>
-        </div>
-      </div>
-      <!--new row for the latest product-->
-      <div class="row">
-        <div class="col-4">
-          <a href=""><img src="../static/images/product-7.jpg" /></a>
-          <h4>HRX cotton socks</h4>
-          <div class="rating">
-            <!--(before this added awesome4 cdn font link to the head)added a cdn link by searching font awesome4 icon and from the site  search the star entering the first option and getting a link of this fa-star*-->
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-            <i class="fa fa-star-o"></i>
-          </div>
-          <p>$10.00</p>
-        </div>
-        <div class="col-4">
-          <a href=""><img src="../static/images/product-10.jpg" /></a>
-          <h4>Flat Lace-Fastening Shoes</h4>
-          <div class="rating">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-          </div>
-          <p>$48.00</p>
-        </div>
-        <div class="col-4">
-          <a href=""><img src="../static/images/product-11.jpg" /></a>
-          <h4>Loafers Men (Gray)</h4>
-          <div class="rating">
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-o"></i>
-          </div>
-          <p>$15.00</p>
-        </div>
-        <div class="col-4">
-          <a href=""><img src="../static/images/product-12.jpg" /></a>
-          <h4>Lace-Fastening white Shoes</h4>
-          <div class="rating">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-star-o"></i>
-          </div>
-          <p>$21.00</p>
-        </div>
+        {% endfor %}
       </div>
     </div>
 
@@ -254,9 +143,7 @@
           <div class="col-2">
             <p>Continuously update the latest products</p>
             <h1>SPORTSWEAR</h1>
-            <small>
-              All available on Alone Wolf Sports. </small
-            ><br />
+            <small> All available on Alone Wolf Sports. </small><br />
             <a href="{{ url_for('products.home') }}" class="btn"
               >Buy now &#8594;</a
             >
@@ -272,8 +159,9 @@
           <div class="col-3">
             <i class="fa fa-quote-left"></i>
             <p>
-              I'm really impressed with your website! The interface is bright and easy to use, 
-              making it easy for users to search and shop for sports products conveniently.
+              I'm really impressed with your website! The interface is bright
+              and easy to use, making it easy for users to search and shop for
+              sports products conveniently.
             </p>
             <div class="rating">
               <i class="fa fa-star"></i>
@@ -288,7 +176,8 @@
           <div class="col-3">
             <i class="fa fa-quote-left"></i>
             <p>
-              Your website is not only a place to shop, but also a source of inspiration for sports enthusiasts!
+              Your website is not only a place to shop, but also a source of
+              inspiration for sports enthusiasts!
             </p>
             <div class="rating">
               <i class="fa fa-star"></i>
@@ -303,7 +192,8 @@
           <div class="col-3">
             <i class="fa fa-quote-left"></i>
             <p>
-              Dedicated to the football enthusiast community, your website is truly a destination not to be missed.
+              Dedicated to the football enthusiast community, your website is
+              truly a destination not to be missed.
             </p>
             <div class="rating">
               <i class="fa fa-star"></i>
