@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width-device-width, initial-scale=1.0" />
-    <title>Trang chủ - AWS</title>
+    <title>Home - AWS</title>
     <link rel="stylesheet" href="../static/style.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -27,14 +27,14 @@
           </div>
           <nav>
             <ul id="MenuItems">
-              <li><a href="{{ url_for('views.home') }}">Trang chủ</a></li>
-              <li><a href="{{ url_for('products.home') }}">Sản phẩm</a></li>
-              <li><a href="{{ url_for('about.home') }}">Thông tin</a></li>
-              <li><a href="{{ url_for('contact.home') }}">Liên hệ</a></li>
-              <li><a href="{{ url_for('account.home') }}">Tài khoản</a></li>
+              <li><a href="{{ url_for('views.home') }}">Home</a></li>
+              <li><a href="{{ url_for('products.home') }}">Products</a></li>
+              <li><a href="{{ url_for('about.home') }}">About</a></li>
+              <li><a href="{{ url_for('contact.home') }}">Contact</a></li>
+              <li><a href="{{ url_for('account.home') }}">Account</a></li>
               <li>
                 <a href="{{ url_for('account.user_account') }}"
-                  >Tài khoản người dùng</a
+                  >User Account</a
                 >
               </li>
             </ul>
@@ -53,11 +53,10 @@
           <div class="col-2">
             <h1>Alone Wolf Sports</h1>
             <p>
-              Bước vào thế giới thể thao cùng chúng tôi - Nơi mỗi bước chạy<br />
-              là một chiến thắng !
+              Enter the world of sports with us - Where every step run is a win !
             </p>
             <a href="{{ url_for('products.home') }}" class="btn"
-              >Khám phá ngay &#8594;</a
+              >Explore now &#8594;</a
             >
           </div>
           <div class="col-2">
@@ -86,7 +85,7 @@
 
     <!------------------------------ featured Products------------------------------>
     <div class="small-container">
-      <h2 class="title">SẢN PHẨM NỔI BẬT</h2>
+      <h2 class="title">Featured Products</h2>
       <div class="row">
         <div class="col-4">
           <a href=""><img src="../static/images/product-11.jpg" /></a>
@@ -139,7 +138,7 @@
         </div>
       </div>
 
-      <h2 class="title">SẢN PHẨM MỚI</h2>
+      <h2 class="title">Latest Products</h2>
       <div class="row">
         <div class="col-4">
           <a href=""><img src="../static/images/product-5.jpg" /></a>
@@ -253,14 +252,13 @@
             <img src="../static/images/sport-accessory.png" class="offer-img" />
           </div>
           <div class="col-2">
-            <p>Liên tục cập nhật sản phẩm mới nhất</p>
-            <h1>ĐỒ THỂ THAO</h1>
+            <p>Continuously update the latest products</p>
+            <h1>SPORTSWEAR</h1>
             <small>
-              Giày, phụ kiện, quần áo thể thao,... Tất cả đều có trên Alone Wolf
-              Sports. </small
+              All available on Alone Wolf Sports. </small
             ><br />
             <a href="{{ url_for('products.home') }}" class="btn"
-              >Mua ngay &#8594;</a
+              >Buy now &#8594;</a
             >
           </div>
         </div>
@@ -274,9 +272,8 @@
           <div class="col-3">
             <i class="fa fa-quote-left"></i>
             <p>
-              Tôi thật sự ấn tượng với trang web của bạn! Giao diện sáng sủa và
-              dễ sử dụng, giúp người dùng dễ dàng tìm kiếm và mua sắm các sản
-              phẩm thể thao một cách thuận tiện.
+              I'm really impressed with your website! The interface is bright and easy to use, 
+              making it easy for users to search and shop for sports products conveniently.
             </p>
             <div class="rating">
               <i class="fa fa-star"></i>
@@ -291,8 +288,7 @@
           <div class="col-3">
             <i class="fa fa-quote-left"></i>
             <p>
-              Website của bạn không chỉ là nơi để mua sắm, mà còn là một nguồn
-              cảm hứng cho những người đam mê thể thao!
+              Your website is not only a place to shop, but also a source of inspiration for sports enthusiasts!
             </p>
             <div class="rating">
               <i class="fa fa-star"></i>
@@ -307,8 +303,7 @@
           <div class="col-3">
             <i class="fa fa-quote-left"></i>
             <p>
-              Dành riêng cho cộng đồng đam mê bóng đá, trang web của bạn thực sự
-              là một điểm đến không thể bỏ qua.
+              Dedicated to the football enthusiast community, your website is truly a destination not to be missed.
             </p>
             <div class="rating">
               <i class="fa fa-star"></i>
@@ -330,7 +325,7 @@
         <div class="row">
           <div class="footer-col-2">
             <img src="../static/images/logo-white.png" />
-            <p>Thể thao không chỉ là một hoạt động, mà còn là lối sống.</p>
+            <p>Sports is not just an activity, but also a lifestyle.</p>
           </div>
           <div class="footer-col-4">
             <h3>Follow us</h3>
