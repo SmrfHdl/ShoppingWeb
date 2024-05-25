@@ -14,17 +14,18 @@ def home():
         for index, row in data.iterrows():
             # existing_product = Product.query.filter_by(name=row['Title'], price=row['Price']).first() 
             # if existing_product is None:
-                product_ = Product(
-                    id = index + 1,
-                    name=row['Title'],
-                    price=row['Price'],
-                    rating=row['Rating'],
-                    review_count=row['Review Count'],
-                    description=row['Description'],
-                    image=row['Image_url'],
-                    category=row['Department']
-                )
-                db.session.add(product_)
+            product_ = Product(
+                id = index + 1,
+                name=row['Title'],
+                price=row['Price'],
+                rating=row['Rating'],
+                review_count=row['Review Count'],
+                description=row['Description'],
+                image=row['Image_url'],
+                url=row['Url'],
+                category=row['Department']
+            )
+            db.session.add(product_)
         db.session.commit()
 
     # Pagination : Thanh trượt chọn số trang
