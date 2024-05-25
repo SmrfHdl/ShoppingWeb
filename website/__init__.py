@@ -12,7 +12,7 @@ class UserModelView(ModelView):
     column_list = ('id', 'email', 'password','username')
 
 class ProductModelView(ModelView):
-    column_list = ('id', 'name', 'price','description', 'image')
+    column_list = ('id', 'name', 'price', 'rating', 'review_count', 'description', 'image', 'category')
 
 class CartModelView(ModelView):
     column_list = ('id', 'user_id', 'total_quantity', 'total_price')
@@ -20,7 +20,7 @@ class CartModelView(ModelView):
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'alonewolfs'
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}?timeout=15'
     db.init_app(app)
     admin = Admin(app)
 
