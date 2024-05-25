@@ -6,6 +6,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(150))
     username = db.Column(db.String(150))
+    
 
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -33,3 +34,4 @@ class CartItem(db.Model):
     cart_id = db.Column(db.Integer, db.ForeignKey('cart.id'), nullable=False) 
     product_id = db.Column(db.Integer, db.ForeignKey('product.id'), nullable=False) 
     quantity = db.Column(db.Integer, nullable=False, default=1) 
+
