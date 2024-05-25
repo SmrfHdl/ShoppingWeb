@@ -22,3 +22,13 @@ class Cart(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     total_quantity = db.Column(db.Integer, nullable=False, default=0)
     total_price = db.Column(db.Integer, nullable=False, default=0)
+    items = db.relationship('CartItem', backref='cart', lazy=True) 
+    def update_total_quantity(self): 
+        self.total_quantity = sum(item.quantity for item in self.items) 
+        db.session.commit()
+
+class CartItem(db.Model): 
+    id = db.Column(db.Integer, primary_key=True) 
+    cart_id = db.Column(db.Integer, db.ForeignKey('cart.id'), nullable=False) 
+    product_id = db.Column(db.Integer, db.ForeignKey('product.id'), nullable=False) 
+    quantity = db.Column(db.Integer, nullable=False, default=1) 

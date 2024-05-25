@@ -62,10 +62,10 @@
       <div class="row">
         {% for product in products %}
         <div class="col-4" id="product_items">
-          <a href="{{ url_for('pd.home') }}s"
+          <a href="{{ url_for('pd.home') }}"
             ><img src="{{ product.image }}"
           /></a>
-          <a href="{{ url_for('pd.home') }}s"><h4>{{ product.name }}</h4></a>
+          <a href="{{ url_for('pd.home') }}"><h4>{{ product.name }}</h4></a>
           <div class="rating">
             <i class="fa fa-star"></i>
             <i class="fa fa-star"></i>

@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
-from .models import User
+from .models import User, Cart
 from website import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, current_user
@@ -9,6 +9,7 @@ account_bp = Blueprint('account', __name__)
 
 @account_bp.route('/account', methods=['GET', 'POST'])
 def home():
+    cart_ = Cart()
     if request.method == 'POST':
         action = request.form.get('action')
         if action == 'login':
@@ -50,6 +51,8 @@ def home():
             else: 
                 new_user = User(email=email, username=username, password=generate_password_hash(password, method='pbkdf2:sha256'))
                 db.session.add(new_user)
+                cart = Cart(user_id=new_user.id)
+                db.session.add(cart)
                 db.session.commit()
 
                 flash('Account created!', category='success')
