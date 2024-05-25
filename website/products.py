@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 from website.models import Product
 import pandas as pd
 from website import db
@@ -26,5 +26,12 @@ def home():
                 )
                 db.session.add(product_)
         db.session.commit()
-    product = Product.query.all()
-    return render_template("products.html", products=product)
+
+    # Pagination : Thanh trượt chọn số trang
+    page = request.args.get('page', 1, type=int)
+    per_page = 12  # Số sản phẩm trên mỗi trang
+    pagination = Product.query.paginate(page=page, per_page=per_page)
+    products = pagination.items
+    print(page, per_page)
+
+    return render_template("products.html", products=products, pagination=pagination)
