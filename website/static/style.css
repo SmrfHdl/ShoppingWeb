@@ -371,6 +371,66 @@ select:focus{
 }
 
 
+
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+.page-item .page-link {
+    color: #fff;
+    background-color: #ff523b;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #ffc107; /* Màu nền vàng */
+    border-color: #ffc107; /* Màu viền vàng */
+    color: white;
+}
+
+.page-item.disabled .page-link {
+    color: #6c757d;
+    pointer-events: none;
+}
+
+.page-item .page-link:hover {
+    background-color: #aa1700;
+    border-color: #aa1700;
+}
+
+.page-btn {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-btn .page-num {
+    padding: 10px 15px;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.page-btn .page-num.active {
+    background-color: #ffc107; /* Màu nền vàng */
+    border-color: #ffc107; /* Màu viền vàng */
+    color: white;
+}
+
+.page-btn #prev-btn, .page-btn #next-btn {
+    font-size: 20px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+
 /*-----------------------single product details -----------------------*/
 
 .single-product{
