@@ -28,11 +28,20 @@ def home():
             db.session.add(product_)
         db.session.commit()
 
-    # Pagination : Thanh trượt chọn số trang
+    category = request.args.get('category')
+
+    if category:
+        query = Product.query.filter_by(category=category)
+        selected_category = category
+    else:
+        query = Product.query
+        selected_category = None
+
+    # Pagination: Thanh trượt chọn số trang
     page = request.args.get('page', 1, type=int)
     per_page = 12  # Số sản phẩm trên mỗi trang
-    pagination = Product.query.paginate(page=page, per_page=per_page)
+    pagination = query.paginate(page=page, per_page=per_page)
     products = pagination.items
     print(page, per_page)
 
-    return render_template("products.html", products=products, pagination=pagination)
+    return render_template("products.html", products=products, pagination=pagination, selected_category=selected_category)
