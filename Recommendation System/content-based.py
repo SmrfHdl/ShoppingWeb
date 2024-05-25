@@ -6,7 +6,7 @@ class CB(object):
         Khởi tại dataframe "movies" với hàm "get_dataframe_movies_csv"
     """
     def __init__(self):
-        self.products = CBF.get_CB_data("data.csv")
+        self.products = CBF.get_CB_data('instance\database.db')
         self.tfidf_matrix = None
         self.cosine_sim = None
 
@@ -26,8 +26,8 @@ class CB(object):
                 + Sắp xếp điểm tương đồng từ cao đến thấp
                 + Trả về top danh sách tương đồng cao nhất theo giá trị "topX" truyền vào
             """
-            titles = self.products['Title']
-            indices = pd.Series(self.products.index, index=self.products['Title'])
+            titles = self.products['name']
+            indices = pd.Series(self.products.index, index=self.products['name'])
             idx = indices[title]
             sim_scores = list(enumerate(self.cosine_sim[idx]))
     
@@ -42,14 +42,14 @@ class CB(object):
             In ra top film tương đồng với film truyền vào
         """
         recommended_items= self.genre_recommendations(text, top_x)
-        res = pd.DataFrame(recommended_items, columns = ['Title'])
+        res = pd.DataFrame(recommended_items, columns = ['name'])
 
-        products = pd.read_csv("data.csv")
-        rcm_res = res.merge(products, on='Title', how='inner')
+        products = CBF.get_data('instance\database.db')
+        rcm_res = res.merge(products, on='name', how='inner')
         return rcm_res
 
 #test
-name = "True & Co Womens True Body Lift Scoop Adjustable Strap Bra"
+name = "Under Armour Men's UA Tech™ Graphic Shorts"
 test = CB()
 test.fit()
 rcm_prodcut = test.CB_get_Rcm_Product(name,10)

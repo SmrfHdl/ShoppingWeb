@@ -127,7 +127,7 @@ class CF(object):
         """
         ids = np.where(self.Y_data[:, 0] == u)[0]
         items_rated_by_u = self.Y_data[ids, 1].tolist()
-        item = {'ID': None, 'similar': None}
+        item = {'id': None, 'similar': None}
         list_items = []
 
         def take_similar(elem):
@@ -136,7 +136,7 @@ class CF(object):
         for i in range(self.n_items):
             if i not in items_rated_by_u:
                 rating = self.__pred(u, i)
-                item['ID'] = i
+                item['id'] = i
                 item['similar'] = rating
                 list_items.append(item.copy())
 
@@ -159,15 +159,15 @@ class CF(object):
     def CF_get_Rcm_Product(self, u,top_x):
         recommended_items = self.recommend_top(u,top_x)
         recommended_items= pd.DataFrame(recommended_items)
-        products = get_data("data.csv")
+        products = get_data("instance\database.db")
 
-        rcm_product = products.merge(recommended_items, on='ID', how='right')
+        rcm_product = products.merge(recommended_items, on='id', how='right')
         rcm_product = rcm_product.drop(columns = ["similar"])
 
         return rcm_product
     
 # test    
-data = get_CF_data("CF_data.base") #ub.base là file chứa rating của một số user về các sản phẩm. mỗi user đã rating ít nhất 10 sản phẩm
+data = get_CF_data("instance\database.db") #ub.base là file chứa rating của một số user về các sản phẩm. mỗi user đã rating ít nhất 10 sản phẩm
 test = CF(data,5)
 test.fit()
 res = test.CF_get_Rcm_Product(10, 10)  # lấy 10 sản phẩm được đề xuất cho user thứ 10 trong db
