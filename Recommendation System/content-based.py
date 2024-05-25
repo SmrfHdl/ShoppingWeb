@@ -1,5 +1,5 @@
 import pandas as pd
-import models.CBCF_function as CBF
+import CBCF_function as CBF
 
 class CB(object):
     """
@@ -28,7 +28,7 @@ class CB(object):
             """
             titles = self.products['Title']
             indices = pd.Series(self.products.index, index=self.products['Title'])
-            idx = indices[title].iloc[0]
+            idx = indices[title]
             sim_scores = list(enumerate(self.cosine_sim[idx]))
     
     # Sắp xếp sim_scores dựa trên giá trị đơn lẻ có thể so sánh được
@@ -37,15 +37,20 @@ class CB(object):
             product_indices = [i[0] for i in sim_scores]
             return titles.iloc[product_indices].values
 
-    def print_recommendations(self, text, top_x):
+    def CB_get_Rcm_Product(self, text, top_x):
         """
             In ra top film tương đồng với film truyền vào
         """
-        print(self.genre_recommendations(text, top_x))
+        recommended_items= self.genre_recommendations(text, top_x)
+        res = pd.DataFrame(recommended_items, columns = ['Title'])
 
+        products = pd.read_csv("data.csv")
+        rcm_res = res.merge(products, on='Title', how='inner')
+        return rcm_res
 
 #test
 name = "True & Co Womens True Body Lift Scoop Adjustable Strap Bra"
 test = CB()
 test.fit()
-test.print_recommendations(name, 10)
+rcm_prodcut = test.CB_get_Rcm_Product(name,10)
+print(rcm_prodcut)
