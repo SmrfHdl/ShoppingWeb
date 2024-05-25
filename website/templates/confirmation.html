@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xác nhận đơn hàng - AWS</title>
+    <title>Confirmation - AWS</title>
     <link rel="stylesheet" href="../static/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
@@ -19,11 +19,11 @@
             </div>
             <nav>
                 <ul id="MenuItems">
-                    <li><a href="{{ url_for('views.home') }}">Trang chủ</a></li>
-                    <li><a href="{{ url_for('products.home') }}">Sản phẩm</a></li>
-                    <li><a href="{{ url_for('about.home') }}">Thông tin</a></li>
-                    <li><a href="{{ url_for('contact.home') }}">Liên hệ</a></li>
-                    <li><a href="{{ url_for('account.home') }}">Tài khoản</a></li>
+                    <li><a href="{{ url_for('views.home') }}">Home</a></li>
+                    <li><a href="{{ url_for('products.home') }}">Products</a></li>
+                    <li><a href="{{ url_for('about.home') }}">About</a></li>
+                    <li><a href="{{ url_for('contact.home') }}">Contact</a></li>
+                    <li><a href="{{ url_for('account.home') }}">Account</a></li>
                 </ul>
             </nav>
             <a href="{{ url_for('cart.home') }}"><img src="../static/images/cart.png" width="30px" height="30px"></a>
@@ -33,12 +33,12 @@
 
     <div class="small-container confirmation-page">
         <p><br><p>
-        <h2>Cảm ơn bạn đã mua hàng!</h2>
+        <h2>Thank you for your purchase!</h2>
         <div class="confirmation-details">
-            <p><br>Đơn hàng của bạn đã được xử lý thành công.</p>
-            <p>Một email xác nhận đã được gửi tới địa chỉ email của bạn.</p>
+            <p><br>Your order has been processed successfully.</p>
+            <p>A confirmation email has been sent to your email address.</p>
         </div>
-        <a href="{{ url_for('products.home') }}" class="btn">Tiếp tục mua sắm</a>
+        <a href="{{ url_for('products.home') }}" class="btn">Continue shopping</a>
         <p><br><br><br><br><br><br><br><p>
     </div>
 

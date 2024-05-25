@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width-device-width, initial-scale=1.0">
-    <title>Thanh toán - AWS</title>
+    <title>Checkout - AWS</title>
     <link rel="stylesheet" href="../static/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
@@ -19,12 +19,11 @@
             </div>
             <nav>
                 <ul id="MenuItems">
-                    <li><a href="{{ url_for('views.home') }}">Trang chủ</a></li>
-                    <li><a href="{{ url_for('products.home') }}">Sản phẩm</a></li>
-                    <li><a href="{{ url_for('about.home') }}">Thông tin</a></li>
-                    <li><a href="{{ url_for('contact.home') }}">Liên hệ</a></li>
-                    <li><a href="{{ url_for('account.home') }}">Tài khoản</a></li>
-                    <li><a href="{{ url_for('account.user_acount')}}">Tài khoản người dùng</a></li>
+                    <li><a href="{{ url_for('views.home') }}">Home</a></li>
+                    <li><a href="{{ url_for('products.home') }}">Products</a></li>
+                    <li><a href="{{ url_for('about.home') }}">About</a></li>
+                    <li><a href="{{ url_for('contact.home') }}">Contact</a></li>
+                    <li><a href="{{ url_for('account.home') }}">Account</a></li>
                 </ul>
             </nav>
             <a href="{{ url_for('cart.home') }}"><img src="../static/images/cart.png" width="30px" height="30px"></a>
@@ -33,16 +32,16 @@
     </div>
 
     <div class="small-container checkout-page">
-        <h2>Chi tiết thanh toán</h2>
+        <h2>Payment details</h2>
         <form id="checkout-form" action="{{ url_for('checkout.process') }}" method="POST">
             <div class="billing-details">
-                <h3>Thông tin khách hàng</h3>
+                <h3>Customer information</h3>
                 <div class="input-group">
-                    <label for="name">Họ và Tên</label>
+                    <label for="name">Name</label>
                     <input type="text" id="name" name="name" required>
                 </div>
                 <div class="input-group">
-                    <label for="phone">Số điện thoại</label>
+                    <label for="phone">Phone</label>
                     <input type="text" id="phone" name="phone" required>
                 </div>
                 <div class="input-group">
@@ -50,26 +49,26 @@
                     <input type="email" id="email" name="email" required>
                 </div>
                 <div class="input-group">
-                    <label for="address">Địa chỉ</label>
+                    <label for="address">Address</label>
                     <input type="text" id="address" name="address" required>
             </div>
 
             <div class="payment-details">
-                <h3>Thông tin thẻ</h3>
+                <h3>Card information</h3>
                 <div class="input-group">
-                    <label for="card-name">Tên trên thẻ</label>
+                    <label for="card-name">Name on Card</label>
                     <input type="text" id="card-name" name="card-name" required>
                 </div>
                 <div class="input-group">
-                    <label for="card-number">Số thẻ</label>
+                    <label for="card-number">Card number</label>
                     <input type="text" id="card-number" name="card-number" required>
                 </div>
                 <div class="input-group">
-                    <label for="exp-month">Tháng hết hạn</label>
+                    <label for="exp-month">Expiration month</label>
                     <input type="text" id="exp-month" name="exp-month" required>
                 </div>
                 <div class="input-group">
-                    <label for="exp-year">Năm hết hạn</label>
+                    <label for="exp-year">Expiration year</label>
                     <input type="text" id="exp-year" name="exp-year" required>
                 </div>
                 <div class="input-group">
@@ -78,7 +77,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn">Thanh toán</button>
+            <button type="submit" class="btn">Payment</button>
         </form>
     </div>
 

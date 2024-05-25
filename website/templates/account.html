@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width-device-width, initial-scale=1.0">
-        <title>Tài khoản - AWS</title>
+        <title>Account - AWS</title>
         <link rel="stylesheet" href="../static/style.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
@@ -20,11 +20,11 @@
                 </div>
                  <nav>
                     <ul id="MenuItems">
-                        <li><a href="{{ url_for('views.home') }}">Trang chủ</a></li>
-                         <li><a href="{{ url_for('products.home') }}">Sản phẩm</a></li>
-                         <li><a href="{{ url_for('about.home') }}">Thông tin</a></li>
-                         <li><a href="{{ url_for('contact.home') }}">Liên hệ</a></li>
-                         <li><a href="{{ url_for('account.home') }}">Tài khoản</a></li>
+                        <li><a href="{{ url_for('views.home') }}">Home</a></li>
+                        <li><a href="{{ url_for('products.home') }}">Products</a></li>
+                        <li><a href="{{ url_for('about.home') }}">About</a></li>
+                        <li><a href="{{ url_for('contact.home') }}">Contact</a></li>
+                        <li><a href="{{ url_for('account.home') }}">Account</a></li>
                     </ul>
                 </nav>
                 <a href="{{ url_for('cart.home') }}"><img src="../static/images/cart.png" width="30px" height="30px"></a>
@@ -67,16 +67,16 @@
                     <div class="col-2">
                         <div class="form-container">
                             <div class="form-btn">
-                                <span onclick="login()">Đăng nhập</span>
-                                <span onclick="register()">Đăng ký</span>
+                                <span onclick="login()">Login</span>
+                                <span onclick="register()">Register</span>
                                 <hr id="Indicator">
                             </div>
                             <form id="LoginForm" method="POST">
                                 <input type="text" name="username" placeholder="username">
                                 <input type="password" name="password" placeholder="password">
                                 <input type="hidden" name="action" value="login">
-                                <button type="submit" class="btn">Đăng nhập</button>
-                                <a href="">Tạo tài khoản</a>
+                                <button type="submit" class="btn">Login</button>
+                                <a href="">Create account</a>
                             </form>
                             
                             <form id="RegForm" method="POST">
@@ -84,7 +84,7 @@
                                 <input type="email" name="email" placeholder="email">
                                 <input type="password" name="password" placeholder="password">
                                 <input type="hidden" name="action" value="register">
-                                <button type="submit" class="btn">Đăng ký</button>
+                                <button type="submit" class="btn">Register</button>
                             </form>
                         </div>
                     </div>
@@ -144,12 +144,12 @@
             function register(){
                 RegForm.style.transform="translateX(0px)";
                 LoginForm.style.transform="translateX(0px)";
-                Indicator.style.transform="translateX(120px)"
+                Indicator.style.transform="translateX(100px)"
             }
             function login(){
                 RegForm.style.transform="translateX(300px)";
                 LoginForm.style.transform="translateX(300px)";
-                Indicator.style.transform="translateX(10px)";
+                Indicator.style.transform="translateX(0px)";
             }
         </script>
 
