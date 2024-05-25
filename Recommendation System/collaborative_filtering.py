@@ -156,7 +156,7 @@ class CF(object):
             else:
                 print('Recommend item', u, 'for user(s) : ', recommended_items)
 
-    def get_Rcm_Product(self, u,top_x):
+    def CF_get_Rcm_Product(self, u,top_x):
         recommended_items = self.recommend_top(u,top_x)
         recommended_items= pd.DataFrame(recommended_items)
         products = get_data("data.csv")
@@ -170,5 +170,5 @@ class CF(object):
 data = get_CF_data("CF_data.base") #ub.base là file chứa rating của một số user về các sản phẩm. mỗi user đã rating ít nhất 10 sản phẩm
 test = CF(data,5)
 test.fit()
-res = test.get_Rcm_Product(10, 10)  # lấy 10 sản phẩm được đề xuất cho user thứ 10 trong db
+res = test.CF_get_Rcm_Product(10, 10)  # lấy 10 sản phẩm được đề xuất cho user thứ 10 trong db
 print(res)
