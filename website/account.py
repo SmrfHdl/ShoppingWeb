@@ -50,6 +50,8 @@ def home():
             else: 
                 new_user = User(email=email, username=username, password=generate_password_hash(password, method='pbkdf2:sha256'))
                 db.session.add(new_user)
+                db.session.flush()  # Đẩy new_user vào cơ sở dữ liệu để có thể lấy được new_user.id
+                
                 cart = Cart(user_id=new_user.id)
                 db.session.add(cart)
                 db.session.commit()

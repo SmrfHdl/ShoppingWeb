@@ -1,12 +1,19 @@
+from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import UserMixin, LoginManager, login_user, login_required, current_user
+from sqlalchemy.orm import backref
 from website import db
-from flask_login import UserMixin
+
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(150))
     username = db.Column(db.String(150))
-    
+    name = db.Column(db.String(150))  
+    address = db.Column(db.String(300))  
+    phone = db.Column(db.String(20))  
+    balance = db.Column(db.Float, nullable=False, default=100000)
 
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -34,4 +41,5 @@ class CartItem(db.Model):
     cart_id = db.Column(db.Integer, db.ForeignKey('cart.id'), nullable=False) 
     product_id = db.Column(db.Integer, db.ForeignKey('product.id'), nullable=False) 
     quantity = db.Column(db.Integer, nullable=False, default=1) 
+
 
