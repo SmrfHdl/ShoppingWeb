@@ -1,337 +1,377 @@
 <!DOCTYPE html>
 <html>
-    
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width-device-width, initial-scale=1.0">
-        <title>Trang chủ - AWS </title>
-        <link rel="stylesheet" href="../static/style.css">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-        <!--added a cdn link by searching font awesome4 cdn and getting this link from https://www.bootstrapcdn.com/fontawesome/ this url*/-->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width-device-width, initial-scale=1.0" />
+    <title>Home - AWS</title>
+    <link rel="stylesheet" href="../static/style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!--added a cdn link by searching font awesome4 cdn and getting this link from https://www.bootstrapcdn.com/fontawesome/ this url*/-->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <div class="container">
+        <div class="navbar">
+          <div class="logo">
+            <a href="{{ url_for('views.home') }}"
+              ><img src="../static/images/logo.png" width="125px"
+            /></a>
+          </div>
+          <nav>
+            <ul id="MenuItems">
+              <li><a href="{{ url_for('views.home') }}">Home</a></li>
+              <li><a href="{{ url_for('products.home') }}">Products</a></li>
+              <li><a href="{{ url_for('about.home') }}">About</a></li>
+              <li><a href="{{ url_for('contact.home') }}">Contact</a></li>
+              <li><a href="{{ url_for('account.home') }}">Account</a></li>
+              <li>
+                <a href="{{ url_for('account.user_account') }}"
+                  >User Account</a
+                >
+              </li>
+            </ul>
+          </nav>
+          <a href="{{ url_for('cart.home') }}"
+            ><img src="../static/images/cart.png" width="30px" height="30px"
+          /></a>
+          <img
+            src="../static/images/menu.png"
+            class="menu-icon"
+            onClick="menutoggle()"
+          />
+        </div>
 
-    </head>
-    <body>
-        <div class ="header">
-        <div class="container">
-            <div class="navbar">
-                <div class="logo">
-                    <a href="{{ url_for('views.home') }}"><img src="../static/images/logo.png" width="125px"></a>
-                </div>
-                <nav>
-                    <ul id="MenuItems">
-                        <li><a href="{{ url_for('views.home') }}">Trang chủ</a></li>
-                         <li><a href="{{ url_for('products.home') }}">Sản phẩm</a></li>
-                         <li><a href="{{ url_for('about.home') }}">Thông tin</a></li>
-                         <li><a href="{{ url_for('contact.home') }}">Liên hệ</a></li>
-                         <li><a href="{{ url_for('account.home') }}">Tài khoản</a></li>
-                         <li><a href="{{ url_for('account.user_account') }}">Tài khoản người dùng</a></li>
-                    </ul>
-                </nav>
-                <a href="{{ url_for('cart.home') }}"><img src="../static/images/cart.png" width="30px" height="30px"></a>
-                <img src="../static/images/menu.png" class="menu-icon" onClick="menutoggle()" >
-            </div>
+        <div class="row">
+          <div class="col-2">
+            <h1>Alone Wolf Sports</h1>
+            <p>
+              Enter the world of sports with us - Where every step run is a win !
+            </p>
+            <a href="{{ url_for('products.home') }}" class="btn"
+              >Explore now &#8594;</a
+            >
+          </div>
+          <div class="col-2">
+            <img src="../static/images/image1.png" width="500px" />
+          </div>
+        </div>
+      </div>
+    </div>
 
-            <div class="row">
-                <div class="col-2">
-                    <h1>Alone Wolf Sports</h1>
-                    <p>Bước vào thế giới thể thao cùng chúng tôi - Nơi mỗi bước chạy<br> là một chiến thắng !</p>
-                    <a href="{{ url_for('products.home') }}" class="btn">Khám phá ngay &#8594;</a>
-                </div>
-                <div class="col-2">
-                    <img src="../static/images/image1.png" width="500px" >
-                </div>
-            </div>
+    <!------------------------------ featured categories------------------------------>
+    <div class="categories">
+      <div class="small-container">
+        <div class="row">
+          <div class="col-3">
+            <img src="../static/images/bayernkit.webp" />
+          </div>
+          <div class="col-3">
+            <img src="../static/images/realkit.webp" />
+          </div>
+          <div class="col-3">
+            <img src="../static/images/mckit.webp" />
+          </div>
         </div>
+      </div>
     </div>
-        
-        <!------------------------------ featured categories------------------------------>
-        <div class="categories">
-            <div class="small-container">
-                <div class="row">
-                <div class="col-3">
-                    <img src="../static/images/bayernkit.webp">
-                </div>
-                <div class="col-3">
-                    <img src="../static/images/realkit.webp">
-                </div>
-                <div class="col-3">
-                    <img src="../static/images/mckit.webp">
-                </div>
-            </div>
-            </div>
+
+    <!------------------------------ featured Products------------------------------>
+    <div class="small-container">
+      <h2 class="title">Featured Products</h2>
+      <div class="row">
+        <div class="col-4">
+          <a href=""><img src="../static/images/product-11.jpg" /></a>
+          <a href=""><h4>Downshifter Sports Shoes</h4></a>
+          <div class="rating">
+            <!--(before this added awesome4 cdn font link to the head)added a cdn link by searching font awesome4 icon and from the site  search the star entering the first option and getting a link of this fa-star*-->
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-o"></i>
+            <i class="fa fa-star-o"></i>
+          </div>
+          <p>$50.00</p>
         </div>
-        
-        <!------------------------------ featured Products------------------------------>
-        <div class="small-container">
-            <h2 class="title" >SẢN PHẨM NỔI BẬT</h2>
-                <div class="row">
-                    <div class="col-4">
-                        <a href="{{ url_for('pd.home') }}"><img src="../static/images/product-11.jpg"></a>
-                        <a href="{{ url_for('pd.home') }}"><h4>Downshifter Sports Shoes</h4></a>
-                        <div class="rating">
-                            <!--(before this added awesome4 cdn font link to the head)added a cdn link by searching font awesome4 icon and from the site  search the star entering the first option and getting a link of this fa-star*-->
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star-half-o" ></i>
-                            <i class="fa fa-star-o" ></i>
-                        </div>
-                        <p>$50.00</p>
-                    </div>
-                    <div class="col-4">
-                        <a href="{{ url_for('pd.home') }}"><img src="../static/images/product-2.jpg"></a>
-                        <h4>Lace-Up Running Shoes</h4>
-                        <div class="rating">
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star-half-o" ></i>
-                        </div>
-                        <p>$35.00</p>
-                    </div>
-                    <div class="col-4">
-                        <a href="{{ url_for('pd.home') }}"><img src="../static/images/product-3.jpg"></a>
-                        <h4>Lace Fastening Shoes</h4>
-                        <div class="rating">
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star-o" ></i>
-                        </div>
-                        <p>$15.00</p>
-                    </div>
-                    <div class="col-4">
-                        <a href="{{ url_for('pd.home') }}"><img src="../static/images/product-10.jpg"></a>
-                        <h4>Flat Lace-Fastening Shoes</h4>
-                        <div class="rating">
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star-o" ></i>
-                            <i class="fa fa-star-o" ></i>
-                        </div>
-                        <p>$48.00</p>
-                    </div>  
-                </div>
-            
-            
-             <h2 class="title" >SẢN PHẨM MỚI</h2>
-                <div class="row">
-                    <div class="col-4">
-                        <a href="{{ url_for('pd.home') }}"><img src="../static/images/product-5.jpg"></a>
-                        <h4>Flat Heel gray hoes</h4>
-                        <div class="rating">
-                            <!--(before this added awesome4 cdn font link to the head)added a cdn link by searching font awesome4 icon and from the site  search the star entering the first option and getting a link of this fa-star*-->
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star-half-o" ></i>
-                            <i class="fa fa-star-o" ></i>
-                        </div>
-                        <p>$50.00</p>
-                    </div>
-                    <div class="col-4">
-                        <a href="{{ url_for('pd.home') }}"><img src="../static/images/product-3.jpg"></a>
-                        <h4>Lace-Fastening black Shoes</h4>
-                        <div class="rating">
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star-half-o" ></i>
-                        </div>
-                        <p>$21.00</p>
-                    </div>
-                    <div class="col-4">
-                        <a href="{{ url_for('pd.home') }}"><img src="../static/images/product-7.jpg"></a>
-                        <h4>HRX Men's cotton socks</h4>
-                        <div class="rating">
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star-o" ></i>
-                        </div>
-                        <p>$09.00</p>
-                    </div>
-                    <div class="col-4">
-                        <a href="{{ url_for('pd.home') }}"><img src="../static/images/product-2.jpg"></a>
-                        <h4>Lace-Up Running Shoes</h4>
-                        <div class="rating">
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star-o" ></i>
-                            <i class="fa fa-star-o" ></i>
-                        </div>
-                        <p>$35.00</p>
-                    </div>  
-                </div>
-            <!--new row for the latest product-->
-                <div class="row">
-                    <div class="col-4">
-                        <a href="{{ url_for('pd.home') }}"><img src="../static/images/product-7.jpg"></a>
-                        <h4>HRX cotton socks</h4>
-                        <div class="rating">
-                            <!--(before this added awesome4 cdn font link to the head)added a cdn link by searching font awesome4 icon and from the site  search the star entering the first option and getting a link of this fa-star*-->
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star-half-o" ></i>
-                            <i class="fa fa-star-o" ></i>
-                        </div>
-                        <p>$10.00</p>
-                    </div>
-                    <div class="col-4">
-                        <a href="{{ url_for('pd.home') }}"><img src="../static/images/product-10.jpg"></a>
-                        <h4>Flat Lace-Fastening Shoes</h4>
-                        <div class="rating">
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star-half-o" ></i>
-                        </div>
-                        <p>$48.00</p>
-                    </div>
-                    <div class="col-4">
-                        <a href="{{ url_for('pd.home') }}"><img src="../static/images/product-11.jpg"></a>
-                        <h4>Loafers Men (Gray)</h4>
-                        <div class="rating">
-                            <i class="fa fa-star-o" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star-o" ></i>
-                        </div>
-                        <p>$15.00</p>
-                    </div>
-                    <div class="col-4">
-                        <a href="{{ url_for('pd.home') }}"><img src="../static/images/product-12.jpg"></a>
-                        <h4>Lace-Fastening white Shoes</h4>
-                        <div class="rating">
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star-o" ></i>
-                            <i class="fa fa-star-o" ></i>
-                        </div>
-                        <p>$21.00</p>
-                    </div>  
-                </div>
-            </div>
-        
-        <!--------------------------offer---------------------------------->
-        <div class="offer">
-            <div class="small-container">
-                <div class="row">
-                    <div class="col-2">
-                        <img src="../static/images/sport-accessory.png" class="offer-img">
-                    </div>
-                    <div class="col-2">
-                        <p>Liên tục cập nhật sản phẩm mới nhất</p>
-                        <h1>ĐỒ THỂ THAO</h1>
-                        <small> Giày, phụ kiện, quần áo thể thao,... Tất cả đều có trên Alone Wolf Sports. </small><br>
-                        <a href="{{ url_for('products.home') }}" class="btn">Mua ngay &#8594;</a>
-                    </div>
-                </div>
-            </div>
+        <div class="col-4">
+          <a href=""><img src="../static/images/product-2.jpg" /></a>
+          <h4>Lace-Up Running Shoes</h4>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-o"></i>
+          </div>
+          <p>$35.00</p>
         </div>
-        
-        
-        
-        <!------------------------------Testimonial---------------------------------->
-        <div class="testimonial">
-            <div class="small-container">
-                <div class="row">
-                    <div class="col-3">
-                        <i class="fa fa-quote-left" ></i>
-                        <p>Tôi thật sự ấn tượng với trang web của bạn! Giao diện sáng sủa và dễ sử dụng, giúp người dùng dễ dàng tìm kiếm và mua sắm các sản phẩm thể thao một cách thuận tiện.</p>
-                        <div class="rating"> 
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star-o" ></i>
-                        </div>
-                        <img src="../static/images/cr7.jpg">
-                        <h3>Cristiano Ronaldo</h3>
-                    </div>
-                    <div class="col-3">
-                        <i class="fa fa-quote-left" ></i>
-                        <p>Website của bạn không chỉ là nơi để mua sắm, mà còn là một nguồn cảm hứng cho những người đam mê thể thao!</p>
-                        <div class="rating">
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star-half-o" ></i>
-                        </div>
-                        <img src="../static/images/messi.jpg">
-                        <h3>Leo Messi</h3>
-                    </div>
-                    <div class="col-3">
-                        <i class="fa fa-quote-left" ></i>
-                        <p>Dành riêng cho cộng đồng đam mê bóng đá, trang web của bạn thực sự là một điểm đến không thể bỏ qua.</p>
-                        <div class="rating"> 
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star-half-o" ></i>
-                        </div>
-                        <img src="../static/images/neymar.jpg">
-                        <h3>Neymar Jr</h3>
-                    </div>
-                </div>
-            </div>
+        <div class="col-4">
+          <a href=""><img src="../static/images/product-3.jpg" /></a>
+          <h4>Lace Fastening Shoes</h4>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-o"></i>
+          </div>
+          <p>$15.00</p>
         </div>
-        
-        <!----------------------------------footer-------------------------------------->
-        <div class ="footer">
-        <div class="container">
-            
-            <div class="row">
-                <div class="footer-col-2">
-                    <img src="../static/images/logo-white.png">
-                    <p>Thể thao không chỉ là một hoạt động, mà còn là lối sống.</p>
-                </div>
-                <div class="footer-col-4">
-                    <h3>Follow us</h3>
-                   <ul>
-                    <li><a href="https://github.com/SmrfHdl" target="_blank">Phạm Văn Trường</a></li>
-                        <li><a href="https://github.com/UETER2226" target="_blank">Đỗ Quang Dũng</a></li>
-                        <li><a href="https://github.com/hieu7404" target="_blank">Lê Trung Hiếu</a></li>
-                        <li><a href="https://github.com/angWindy" target="_blank">Trần An Thắng</a></li>                    
-                    </ul>
-                </div>
-                
-            </div>
-            
-            <hr><!--horizontal line-->
-            <p class="copyright">Alone Wolf Team</p>
-            
+        <div class="col-4">
+          <a href=""><img src="../static/images/product-10.jpg" /></a>
+          <h4>Flat Lace-Fastening Shoes</h4>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+          </div>
+          <p>$48.00</p>
         </div>
+      </div>
+
+      <h2 class="title">Latest Products</h2>
+      <div class="row">
+        <div class="col-4">
+          <a href=""><img src="../static/images/product-5.jpg" /></a>
+          <h4>Flat Heel gray hoes</h4>
+          <div class="rating">
+            <!--(before this added awesome4 cdn font link to the head)added a cdn link by searching font awesome4 icon and from the site  search the star entering the first option and getting a link of this fa-star*-->
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-o"></i>
+            <i class="fa fa-star-o"></i>
+          </div>
+          <p>$50.00</p>
+        </div>
+        <div class="col-4">
+          <a href=""><img src="../static/images/product-3.jpg" /></a>
+          <h4>Lace-Fastening black Shoes</h4>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-o"></i>
+          </div>
+          <p>$21.00</p>
+        </div>
+        <div class="col-4">
+          <a href=""><img src="../static/images/product-7.jpg" /></a>
+          <h4>HRX Men's cotton socks</h4>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-o"></i>
+          </div>
+          <p>$09.00</p>
+        </div>
+        <div class="col-4">
+          <a href=""><img src="../static/images/product-2.jpg" /></a>
+          <h4>Lace-Up Running Shoes</h4>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+          </div>
+          <p>$35.00</p>
+        </div>
+      </div>
+      <!--new row for the latest product-->
+      <div class="row">
+        <div class="col-4">
+          <a href=""><img src="../static/images/product-7.jpg" /></a>
+          <h4>HRX cotton socks</h4>
+          <div class="rating">
+            <!--(before this added awesome4 cdn font link to the head)added a cdn link by searching font awesome4 icon and from the site  search the star entering the first option and getting a link of this fa-star*-->
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-o"></i>
+            <i class="fa fa-star-o"></i>
+          </div>
+          <p>$10.00</p>
+        </div>
+        <div class="col-4">
+          <a href=""><img src="../static/images/product-10.jpg" /></a>
+          <h4>Flat Lace-Fastening Shoes</h4>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-o"></i>
+          </div>
+          <p>$48.00</p>
+        </div>
+        <div class="col-4">
+          <a href=""><img src="../static/images/product-11.jpg" /></a>
+          <h4>Loafers Men (Gray)</h4>
+          <div class="rating">
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-o"></i>
+          </div>
+          <p>$15.00</p>
+        </div>
+        <div class="col-4">
+          <a href=""><img src="../static/images/product-12.jpg" /></a>
+          <h4>Lace-Fastening white Shoes</h4>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o"></i>
+          </div>
+          <p>$21.00</p>
+        </div>
+      </div>
     </div>
-        
-        
-        <!-----------------------------------js for toggle menu------------------------------------------------>
-        <script>
-            var menuItems=document.getElementById("MenuItems");
-            
-            MenuItems.style.maxHeight="0px";
-            function menutoggle(){
-                if(MenuItems.style.maxHeight == "0px"){
-                    MenuItems.style.maxHeight="200px";
-                }
-                else{
-                    MenuItems.style.maxHeight="0px";
-                }
-            }
-        </script>
-    </body>
+
+    <!--------------------------offer---------------------------------->
+    <div class="offer">
+      <div class="small-container">
+        <div class="row">
+          <div class="col-2">
+            <img src="../static/images/sport-accessory.png" class="offer-img" />
+          </div>
+          <div class="col-2">
+            <p>Continuously update the latest products</p>
+            <h1>SPORTSWEAR</h1>
+            <small>
+              All available on Alone Wolf Sports. </small
+            ><br />
+            <a href="{{ url_for('products.home') }}" class="btn"
+              >Buy now &#8594;</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!------------------------------Testimonial---------------------------------->
+    <div class="testimonial">
+      <div class="small-container">
+        <div class="row">
+          <div class="col-3">
+            <i class="fa fa-quote-left"></i>
+            <p>
+              I'm really impressed with your website! The interface is bright and easy to use, 
+              making it easy for users to search and shop for sports products conveniently.
+            </p>
+            <div class="rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-o"></i>
+            </div>
+            <img src="../static/images/cr7.jpg" />
+            <h3>Cristiano Ronaldo</h3>
+          </div>
+          <div class="col-3">
+            <i class="fa fa-quote-left"></i>
+            <p>
+              Your website is not only a place to shop, but also a source of inspiration for sports enthusiasts!
+            </p>
+            <div class="rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-half-o"></i>
+            </div>
+            <img src="../static/images/messi.jpg" />
+            <h3>Leo Messi</h3>
+          </div>
+          <div class="col-3">
+            <i class="fa fa-quote-left"></i>
+            <p>
+              Dedicated to the football enthusiast community, your website is truly a destination not to be missed.
+            </p>
+            <div class="rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-half-o"></i>
+            </div>
+            <img src="../static/images/neymar.jpg" />
+            <h3>Neymar Jr</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!----------------------------------footer-------------------------------------->
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="footer-col-2">
+            <img src="../static/images/logo-white.png" />
+            <p>Sports is not just an activity, but also a lifestyle.</p>
+          </div>
+          <div class="footer-col-4">
+            <h3>Follow us</h3>
+            <ul>
+              <li>
+                <a href="https://github.com/SmrfHdl" target="_blank"
+                  >Phạm Văn Trường</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/UETER2226" target="_blank"
+                  >Đỗ Quang Dũng</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/hieu7404" target="_blank"
+                  >Lê Trung Hiếu</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/angWindy" target="_blank"
+                  >Trần An Thắng</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <hr />
+        <!--horizontal line-->
+        <p class="copyright">Alone Wolf Team</p>
+      </div>
+    </div>
+
+    <!-----------------------------------js for toggle menu------------------------------------------------>
+    <script>
+      var menuItems = document.getElementById("MenuItems");
+
+      MenuItems.style.maxHeight = "0px";
+      function menutoggle() {
+        if (MenuItems.style.maxHeight == "0px") {
+          MenuItems.style.maxHeight = "200px";
+        } else {
+          MenuItems.style.maxHeight = "0px";
+        }
+      }
+    </script>
+  </body>
 </html>

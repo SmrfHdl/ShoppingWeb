@@ -14,24 +14,34 @@ def home():
         for index, row in data.iterrows():
             # existing_product = Product.query.filter_by(name=row['Title'], price=row['Price']).first() 
             # if existing_product is None:
-                product_ = Product(
-                    id = index + 1,
-                    name=row['Title'],
-                    price=row['Price'],
-                    rating=row['Rating'],
-                    review_count=row['Review Count'],
-                    description=row['Description'],
-                    image=row['Image_url'],
-                    category=row['Department']
-                )
-                db.session.add(product_)
+            product_ = Product(
+                id = index + 1,
+                name=row['Title'],
+                price=row['Price'],
+                rating=row['Rating'],
+                review_count=row['Review Count'],
+                description=row['Description'],
+                image=row['Image_url'],
+                url=row['Url'],
+                category=row['Department']
+            )
+            db.session.add(product_)
         db.session.commit()
 
-    # Pagination : Thanh trượt chọn số trang
+    category = request.args.get('category')
+
+    if category:
+        query = Product.query.filter_by(category=category)
+        selected_category = category
+    else:
+        query = Product.query
+        selected_category = None
+
+    # Pagination: Thanh trượt chọn số trang
     page = request.args.get('page', 1, type=int)
     per_page = 12  # Số sản phẩm trên mỗi trang
-    pagination = Product.query.paginate(page=page, per_page=per_page)
+    pagination = query.paginate(page=page, per_page=per_page)
     products = pagination.items
     print(page, per_page)
 
-    return render_template("products.html", products=products, pagination=pagination)
+    return render_template("products.html", products=products, pagination=pagination, selected_category=selected_category)

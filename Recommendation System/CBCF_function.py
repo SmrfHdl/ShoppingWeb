@@ -7,6 +7,7 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 from nltk.tokenize import word_tokenize
+import sqlite3
 
 def tfidf_matrix(df_new):
     """
@@ -56,25 +57,41 @@ def dict_to_string(detail_dict):
     return "".join(c for c in detail_dict if c.isalpha() or c == " ")
 
 def get_CB_data(text):
-    data = pd.read_csv(text)
-    df_new = data[['ID', 'Title','Detail','Description', 'Department']].copy()
+    conn = sqlite3.connect(text)
 
-    df_new['Detail'] = df_new['Detail'].apply(dict_to_string)
-    df_new['Description'] = df_new['Description'].apply(preprocess_text)
+        # Đọc dữ liệu từ bảng 'ten_bang' vào DataFrame
+    query = "SELECT * FROM product"  # Thay 'ten_bang' bằng tên bảng thực tế của bạn
+    data = pd.read_sql(query, conn)
 
-    df_new['combined_features'] = df_new['Department'] + " " + df_new['Detail'] + " " + df_new['Description']
+    df_new = data[[ 'name','description', 'category']].copy()
 
+    df_new['description'] = df_new['description'].apply(preprocess_text)
+    df_new['category'] = df_new['category'].apply(preprocess_text)
+
+    df_new['combined_features'] = df_new['category']  + " " + df_new['description']
+
+    conn.close()
     return df_new
 
 def get_CF_data(text):
    """
    đọc file base của movilens, lưu thành dataframe với 3 cột user id, item id, rating
    """
-   ratings = pd.read_csv(text, sep ='\t',encoding='latin-1')
-   data = ratings.values
+   conn = sqlite3.connect(text)
+
+        # Đọc dữ liệu từ bảng 'ten_bang' vào DataFrame
+   query = "SELECT * FROM Rating_History"  # Thay 'ten_bang' bằng tên bảng thực tế của bạn
+   data = pd.read_sql(query, conn)
+   data = data.values
    return data
 
 def get_data(text):
-    data = pd.read_csv(text)
+    conn = sqlite3.connect(text)
+
+        # Đọc dữ liệu từ bảng 'ten_bang' vào DataFrame
+    query = "SELECT * FROM product"  # Thay 'ten_bang' bằng tên bảng thực tế của bạn
+    data = pd.read_sql(query, conn)
+
+    conn.close()
     return data
 
