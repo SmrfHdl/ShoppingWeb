@@ -9,13 +9,13 @@ products_bp = Blueprint('products', __name__)
 
 def home():
     data = pd.read_csv('Data/final_data.csv')
-    max_id = db.session.query(db.func.max(Product.id)).scalar() or 0
+    # max_id = db.session.query(db.func.max(Product.id)).scalar() or 0
     if Product.query.count() == 0:
         for index, row in data.iterrows():
-            existing_product = Product.query.filter_by(name=row['Title'], price=row['Price']).first() 
-            if existing_product is None:
+            # existing_product = Product.query.filter_by(name=row['Title'], price=row['Price']).first() 
+            # if existing_product is None:
                 product_ = Product(
-                    id = max_id + index + 1,
+                    id = index + 1,
                     name=row['Title'],
                     price=row['Price'],
                     rating=row['Rating'],

@@ -9,7 +9,6 @@ account_bp = Blueprint('account', __name__)
 
 @account_bp.route('/account', methods=['GET', 'POST'])
 def home():
-    cart_ = Cart()
     if request.method == 'POST':
         action = request.form.get('action')
         if action == 'login':
@@ -65,3 +64,9 @@ def home():
 @account_bp.route('/user_account')
 def user_account():
     return render_template("user_account.html")
+
+@account_bp.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('views.home'))

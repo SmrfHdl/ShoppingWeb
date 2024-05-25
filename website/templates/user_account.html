@@ -22,6 +22,7 @@
                     <li><a href="{{ url_for('about.home') }}">Thông tin</a></li>
                     <li><a href="{{ url_for('contact.home') }}">Liên hệ</a></li>
                     <li><a href="{{ url_for('account.home') }}">Tài khoản</a></li>
+                    <li><a href="{{ url_for('account.user_account') }}">Tài khoản người dùng</a></li>
                 </ul>
             </nav>
             <a href="{{ url_for('cart.home') }}"><img src="../static/images/cart.png" width="30px" height="30px"></a>
@@ -47,7 +48,7 @@
             <div class="row">
                 <div class="col-2">
                     <h2>Chào mừng, {{ current_user.username }}!</h2>
-                    <a href="{{ url_for('account.user_account') }}" class="btn">Đăng xuất</a>
+                    <a href="{{ url_for('account.logout') }}" class="btn">Đăng xuất</a>
                     
                     <h3>Đổi mật khẩu</h3>
                     <form method="POST" action="{{ url_for('account.user_account') }}">
