@@ -13,18 +13,18 @@
     <div class="container">
         <div class="navbar">
             <div class="logo">
-                <a href="{{ url_for('home') }}"><img src="../static/images/logo.png" width="125px"></a>
+                <a href="{{ url_for('views.home') }}"><img src="../static/images/logo.png" width="125px"></a>
             </div>
             <nav>
                 <ul id="MenuItems">
-                    <li><a href="{{ url_for('home') }}">Trang chủ</a></li>
-                    <li><a href="{{ url_for('products') }}">Sản phẩm</a></li>
-                    <li><a href="{{ url_for('about') }}">Thông tin</a></li>
-                    <li><a href="{{ url_for('contact') }}">Liên hệ</a></li>
-                    <li><a href="{{ url_for('account') }}">Tài khoản</a></li>
+                    <li><a href="{{ url_for('views.home') }}">Trang chủ</a></li>
+                    <li><a href="{{ url_for('products.home') }}">Sản phẩm</a></li>
+                    <li><a href="{{ url_for('about.home') }}">Thông tin</a></li>
+                    <li><a href="{{ url_for('contact.home') }}">Liên hệ</a></li>
+                    <li><a href="{{ url_for('account.home') }}">Tài khoản</a></li>
                 </ul>
             </nav>
-            <a href="{{ url_for('cart') }}"><img src="../static/images/cart.png" width="30px" height="30px"></a>
+            <a href="{{ url_for('cart.home') }}"><img src="../static/images/cart.png" width="30px" height="30px"></a>
             <img src="../static/images/menu.png" class="menu-icon" onClick="menutoggle()">
         </div>
     </div>
@@ -47,10 +47,10 @@
             <div class="row">
                 <div class="col-2">
                     <h2>Chào mừng, {{ current_user.username }}!</h2>
-                    <a href="{{ url_for('logout') }}" class="btn">Đăng xuất</a>
+                    <a href="{{ url_for('account.user_account') }}" class="btn">Đăng xuất</a>
                     
                     <h3>Đổi mật khẩu</h3>
-                    <form method="POST" action="{{ url_for('change_password') }}">
+                    <form method="POST" action="{{ url_for('account.user_account') }}">
                         <input type="password" name="current_password" placeholder="Mật khẩu hiện tại" required>
                         <input type="password" name="new_password" placeholder="Mật khẩu mới" required>
                         <input type="password" name="confirm_password" placeholder="Xác nhận mật khẩu mới" required>
