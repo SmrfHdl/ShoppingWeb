@@ -78,3 +78,10 @@ def logout():
 @login_required
 def reset_password():
     return render_template("reset_password.html")
+
+@account_bp.route('/redirect_account')
+def redirect_account():
+    if current_user.is_authenticated:
+        return redirect(url_for('account.user_account'))
+    else:
+        return redirect(url_for('account.home'))

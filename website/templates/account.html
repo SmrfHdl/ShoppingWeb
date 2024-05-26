@@ -24,7 +24,8 @@
                         <li><a href="{{ url_for('products.home') }}">Products</a></li>
                         <li><a href="{{ url_for('about.home') }}">About</a></li>
                         <li><a href="{{ url_for('contact.home') }}">Contact</a></li>
-                        <li><a href="{{ url_for('account.home') }}">Account</a></li>
+                        <li><a href="{{ url_for('account.redirect_account') }}">Account</a></li>
+                        <li><a href= "{{ url_for('account.redirect_account')}}">User Account</a></li>
                     </ul>
                 </nav>
                 <a href="{{ url_for('cart.home') }}"><img src="../static/images/cart.png" width="30px" height="30px"></a>
