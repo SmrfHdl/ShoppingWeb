@@ -42,7 +42,7 @@ class CartItem(db.Model):
     product_id = db.Column(db.Integer, db.ForeignKey('product.id'), nullable=False) 
     size = db.Column(db.String(5))
     quantity = db.Column(db.Integer, nullable=False, default=1) 
-    product = db.relationship('Product', lazy=True)
+    product = db.relationship('Product')
 
 
 

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width-device-width, initial-scale=1.0" />
-    <title>Products - AWS</title>
+    <title>{{ product['name'] }}</title>
     <link rel="stylesheet" href="../static/style.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -72,24 +72,29 @@
           </div>
         </div>
 
-        <div class="col-2">
-          <p>Home / {{ product['category'] }}</p>
-          <h1>{{ product.name }}</h1>
-          <h4>${{ product.price }}</h4>
-          <select>
-            <option>Select Size</option>
-            <option>S<!--Small (s)--></option>
-            <option>M<!--Medium (M)--></option>
-            <option>L<!--Large (L)--></option>
-            <option>XL<!--XL--></option>
-            <option>XXL<!--XXL--></option>
-          </select>
-          <input type="number" values="1" min="0" />
-          <a href="{{ url_for('cart.home') }}" class="btn">Add to Cart</a>
-          <h3>Product Details <i class="fa fa-indent"></i></h3>
-          <br />
-          <p>{{product.description}}</p>
-        </div>
+        <form
+          method="POST"
+          action="{{ url_for('pd.add_to_cart', product_id=product.id) }}"
+        >
+          <div class="col-2">
+            <p>Home / {{ product['category'] }}</p>
+            <h1>{{ product.name }}</h1>
+            <h4>${{ product.price }}</h4>
+            <select name="size" required>
+              <option value="">Select Size</option>
+              <option value="S">Small (S)</option>
+              <option value="M">Medium (M)</option>
+              <option value="L">Large (L)</option>
+              <option value="XL">Extra Large (XL)</option>
+              <option value="XXL">Extra Extra Large (XXL)</option>
+            </select>
+            <input type="number" name="quantity" values="1" min="1" required />
+            <button type="submit" class="btn">Add to Cart</button>
+            <h3>Product Details <i class="fa fa-indent"></i></h3>
+            <br />
+            <p>{{product.description}}</p>
+          </div>
+        </form>
       </div>
     </div>
 
