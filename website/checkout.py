@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import current_user, login_required
 from website.models import Cart, CartItem, Order, OrderItem, Payment
 from website import db
+from datetime import datetime
 
 checkout_bp = Blueprint('checkout', __name__)
 
@@ -19,42 +20,43 @@ def checkout():
 def process():
     return None
 
-# @checkout_bp.route('/place_order', methods=['POST'])
-# @login_required
-# def place_order():
-#     cart = Cart.query.filter_by(user_id=current_user.id).first()
-#     if not cart or cart.total_quantity == 0:
-#         flash('Your cart is empty!', 'warning')
-#         return redirect(url_for('cart.home'))
+@checkout_bp.route('/payment', methods=['POST'])
+def payment():
+    # Kiểm tra xem người dùng đã đăng nhập chưa
+    if not current_user.is_authenticated:
+        flash('Please log in to proceed with payment.', 'warning')
+        return redirect(url_for('account.home'))
     
-#     order = Order(user_id=current_user.id, total_price=cart.total_price)
-#     db.session.add(order)
-#     db.session.commit()
-    
-#     for item in cart.items:
-#         order_item = OrderItem(order_id=order.id, product_id=item.product_id, quantity=item.quantity, size=item.size, price=item.product.price)
-#         db.session.add(order_item)
-    
-#     db.session.commit()
+    # Nhận thông tin từ form thanh toán
+    name = request.form.get('name')
+    phone = request.form.get('phone')
+    email = request.form.get('email')
+    address = request.form.get('address')
 
-#     payment = Payment(order_id=order.id, amount=order.total_price)
-#     db.session.add(payment)
-#     db.session.commit()
+    print(name, phone, email, address)
 
-#     cart.items = []
-#     cart.total_quantity = 0
-#     cart.total_price = 0
-#     db.session.commit()
+    # Tạo đối tượng Order dựa trên thông tin đơn hàng của người dùng
+    order = Order(user_id=current_user.id, order_date=datetime.utcnow(), status='Pending')
 
-#     flash('Your order has been placed successfully!', 'success')
-#     return redirect(url_for('order_detail', order_id=order.id))
+    # Lặp qua từng mục trong giỏ hàng của người dùng và tạo đối tượng OrderItem cho mỗi mục
+    for cart_item in current_user.cart.items:
+        order_item = OrderItem(order_id=order.id, product_id=cart_item.product_id, quantity=cart_item.quantity, size=cart_item.size, price=cart_item.product.price)
+        db.session.add(order_item)
 
-# @checkout_bp.route('/order_detail/<int:order_id>')
-# @login_required
-# def order_detail(order_id):
-#     order = Order.query.get_or_404(order_id)
-#     if order.user_id != current_user.id:
-#         flash('You do not have permission to view this order.', 'danger')
-#         return redirect(url_for('home'))
-    
-#     return render_template('order_detail.html', order=order)
+    # Tính tổng số tiền của đơn hàng
+    total_price = sum(item.product.price * item.quantity for item in current_user.cart.items)
+
+    order.total_price = total_price
+    db.session.add(order)
+    db.session.flush()  # Lấy id của order mới tạo
+
+    # Tạo đối tượng Payment để lưu thông tin về thanh toán
+    payment = Payment(order_id=order.id, amount=total_price, payment_date=datetime.utcnow(), status='Completed')
+    db.session.add(payment)
+
+    # Xóa giỏ hàng của người dùng sau khi đã thanh toán
+    current_user.cart.items.clear()
+    db.session.commit()
+
+    flash('Payment successful! Thank you for your purchase.', 'success')
+    return redirect(url_for('home'))

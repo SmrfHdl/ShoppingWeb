@@ -13,6 +13,8 @@ class User(db.Model, UserMixin):
     phone = db.Column(db.String(20) , default= '0987654321')  
     balance = db.Column(db.Float, nullable=False, default=100000)
 
+    orders = db.relationship("Order", back_populates="user")
+
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(300), nullable=False)
@@ -50,7 +52,9 @@ class Order(db.Model):
     order_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     status = db.Column(db.String(50), nullable=False, default='Pending')
     total_price = db.Column(db.Float, nullable=False, default=0.0)
+
     items = db.relationship('OrderItem', backref='order', lazy=True)
+    user = db.relationship("User", back_populates="orders")
 
 class OrderItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -66,3 +70,4 @@ class Payment(db.Model):
     amount = db.Column(db.Float, nullable=False)
     payment_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     status = db.Column(db.String(50), nullable=False, default='Completed')
+
