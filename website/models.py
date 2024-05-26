@@ -1,5 +1,5 @@
 from flask_login import UserMixin
-from sqlalchemy import event
+from datetime import datetime
 from website import db
 
 
@@ -8,9 +8,9 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(150))
     username = db.Column(db.String(150))
-    name = db.Column(db.String(150))  
-    address = db.Column(db.String(300))  
-    phone = db.Column(db.String(20))  
+    name = db.Column(db.String(150), default = 'Lorem Ipsum')  
+    address = db.Column(db.String(300), default = 'Lorem Ipsum Address')  
+    phone = db.Column(db.String(20) , default= '0987654321')  
     balance = db.Column(db.Float, nullable=False, default=100000)
 
 class Product(db.Model):
@@ -44,10 +44,25 @@ class CartItem(db.Model):
     quantity = db.Column(db.Integer, nullable=False, default=1) 
     product = db.relationship('Product')
 
+class Order(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    order_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    status = db.Column(db.String(50), nullable=False, default='Pending')
+    total_price = db.Column(db.Float, nullable=False, default=0.0)
+    items = db.relationship('OrderItem', backref='order', lazy=True)
 
-# @event.listens_for(CartItem, 'after_insert')
-# @event.listens_for(CartItem, 'after_update')
-# def after_insert_or_update_cart_item(mapper, connection, target):
-#     cart = Cart.query.get(target.cart_id)
-#     if cart:
-#         cart.update_totals()
+class OrderItem(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    order_id = db.Column(db.Integer, db.ForeignKey('order.id'), nullable=False)
+    product_id = db.Column(db.Integer, db.ForeignKey('product.id'), nullable=False)
+    quantity = db.Column(db.Integer, nullable=False, default=1)
+    size = db.Column(db.String(10), nullable=False)
+    price = db.Column(db.Float, nullable=False)
+
+class Payment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    order_id = db.Column(db.Integer, db.ForeignKey('order.id'), nullable=False)
+    amount = db.Column(db.Float, nullable=False)
+    payment_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    status = db.Column(db.String(50), nullable=False, default='Completed')
