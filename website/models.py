@@ -31,10 +31,10 @@ class Cart(db.Model):
     total_price = db.Column(db.Integer, nullable=False, default=0)
     items = db.relationship('CartItem', backref='cart', lazy=True) 
 
-    def update_totals(self):
-        self.total_quantity = sum(item.quantity for item in self.items)
-        self.total_price = sum(item.quantity * item.product.price for item in self.items)
-        db.session.commit()
+    # def update_totals(self):
+    #     self.total_quantity = sum(item.quantity for item in self.items)
+    #     self.total_price = sum(item.quantity * item.product.price for item in self.items)
+    #     db.session.commit()
 
 class CartItem(db.Model): 
     id = db.Column(db.Integer, primary_key=True) 
@@ -45,10 +45,9 @@ class CartItem(db.Model):
     product = db.relationship('Product')
 
 
-
-@event.listens_for(CartItem, 'after_insert')
-@event.listens_for(CartItem, 'after_update')
-def after_insert_or_update_cart_item(mapper, connection, target):
-    cart = Cart.query.get(target.cart_id)
-    if cart:
-        cart.update_totals()
+# @event.listens_for(CartItem, 'after_insert')
+# @event.listens_for(CartItem, 'after_update')
+# def after_insert_or_update_cart_item(mapper, connection, target):
+#     cart = Cart.query.get(target.cart_id)
+#     if cart:
+#         cart.update_totals()

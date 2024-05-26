@@ -24,7 +24,7 @@ def add_to_cart(product_id):
     product = Product.query.get_or_404(product_id)
     size = request.form.get('size')
     quantity = request.form.get('quantity', type=int)
-    print(product.name, quantity, size)
+    print(product.id, product.name, quantity, size)
 
     if not size:
         flash('Please select a size.', 'warning')
@@ -35,13 +35,9 @@ def add_to_cart(product_id):
         return redirect(url_for('pd.home', product_url=product.url))
     
     cart = Cart.query.filter_by(user_id=current_user.id).first()
-    if not cart:
-        cart = Cart(user_id=current_user.id)
-        db.session.add(cart)
 
-    try:
-        # Bắt đầu một phiên giao dịch mới
-        # Thực hiện các thao tác trên cơ sở dữ liệu
+    if cart:
+        # Bắt đầu một phiên giao dịch mới nếu session chưa được bắt đầu
         if not db.session.is_active:
             db.session.begin()
 
@@ -51,15 +47,11 @@ def add_to_cart(product_id):
         else:
             cart_item = CartItem(cart_id=cart.id, product_id=product.id, quantity=quantity, size=size)
             db.session.add(cart_item)
-
-        # db.session.commit()  # Lưu thay đổi vào cơ sở dữ liệu
-
-        cart.update_totals()
+            
+        db.session.commit()
 
         flash('Item added to cart!', 'success')
-    except Exception as e:
-        # db.session.rollback()  # Rollback lại giao dịch nếu có lỗi
-        flash('An error occurred. Please try again.', 'danger')
-        print("Error adding item to cart:", e)
+    else:
+        flash('Cart not found.', 'danger')
     
     return redirect(url_for('pd.home', product_url=product.url))
