@@ -37,10 +37,6 @@ def add_to_cart(product_id):
     cart = Cart.query.filter_by(user_id=current_user.id).first()
 
     if cart:
-        # Bắt đầu một phiên giao dịch mới nếu session chưa được bắt đầu
-        if not db.session.is_active:
-            db.session.begin()
-
         cart_item = CartItem.query.filter_by(cart_id=cart.id, product_id=product.id, size=size).first()
         if cart_item:
             cart_item.quantity += quantity
@@ -49,6 +45,8 @@ def add_to_cart(product_id):
             db.session.add(cart_item)
             
         db.session.commit()
+
+        cart.update_totals()
 
         flash('Item added to cart!', 'success')
     else:
