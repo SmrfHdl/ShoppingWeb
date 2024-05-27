@@ -4,7 +4,7 @@ from sklearn.metrics.pairwise import linear_kernel , cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
 import numpy as np
 from scipy import sparse
-from CBCF_function import get_CF_data, get_data
+import RecommendationSystem.CBCF_function
 
 class CF(object):
     """
@@ -159,7 +159,7 @@ class CF(object):
     def CF_get_Rcm_Product(self, u,top_x):
         recommended_items = self.recommend_top(u,top_x)
         recommended_items= pd.DataFrame(recommended_items)
-        products = get_data("instance\database.db")
+        products = RecommendationSystem.CBCF_function.get_data("instance\database.db")
 
         rcm_product = products.merge(recommended_items, on='id', how='right')
         rcm_product = rcm_product.drop(columns = ["similar"])
@@ -167,8 +167,8 @@ class CF(object):
         return rcm_product
     
 # test    
-data = get_CF_data("instance\database.db") #ub.base là file chứa rating của một số user về các sản phẩm. mỗi user đã rating ít nhất 10 sản phẩm
-test = CF(data,5)
-test.fit()
-res = test.CF_get_Rcm_Product(10, 10)  # lấy 10 sản phẩm được đề xuất cho user thứ 10 trong db
-print(res)
+#data = RecommendationSystem.CBCF_function.get_CF_data("instance\database.db") #ub.base là file chứa rating của một số user về các sản phẩm. mỗi user đã rating ít nhất 10 sản phẩm
+#test = CF(data,5)
+#test.fit()
+#res = test.CF_get_Rcm_Product(10, 10)  # lấy 10 sản phẩm được đề xuất cho user thứ 10 trong db
+#print(res)

@@ -2,8 +2,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash,
 from website.models import Product, Cart, CartItem
 from flask_login import current_user
 from website import db
-
-# import RecommendationSystem.content_based 
+import RecommendationSystem.content_based 
 
 pd_bp = Blueprint('pd', __name__)
 
@@ -15,10 +14,10 @@ def home(product_url):
         abort(404)  # Trả về lỗi 404 nếu không tìm thấy sản phẩm
     print("Get product information successfully")
 
-    # rcm_products = RecommendationSystem.content_based.get_recommendations(product.name,4)
+    rcm_products = RecommendationSystem.content_based.get_recommendations(product.name,4)
     print(product.name)
-    return render_template("products-details.html", product=product)
-    # return render_template("products-details.html", product=product, rcm_products=rcm_products)
+    #return render_template("products-details.html", product=product)
+    return render_template("products-details.html", product=product, rcm_products=rcm_products)
 
 @pd_bp.route('/add_to_cart/<int:product_id>', methods=['POST'])
 def add_to_cart(product_id):

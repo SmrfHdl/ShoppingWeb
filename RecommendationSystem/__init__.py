@@ -1,2 +1,2 @@
-import RecommendationSystem.collaborative_filtering
 import RecommendationSystem.content_based
+import RecommendationSystem.collaborative_filtering
