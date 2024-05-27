@@ -48,7 +48,7 @@
       <h2>Payment details</h2>
       <form
         id="checkout-form"
-        action="{{ url_for('checkout.process') }}"
+        action="{{ url_for('checkout.payment') }}"
         method="POST"
       >
         <div class="billing-details">
@@ -114,7 +114,7 @@
               <div>
                 <p>{{item.product.name}}</p>
                 <small class="product-price"
-                  >Price: ${{item.product.price}}</small
+                  >Price: ${{ '%.2f' | format(item.product.price)}}</small
                 ><br />
                 <a href="#" class="remove-btn">Remove</a>
               </div>
@@ -137,6 +137,19 @@
             <td>Total</td>
             <td class="subtotal-price">
               ${{ '%.2f' | format(cart.total_price) }}
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+      <div class="user-balance">
+        <table>
+          <tr>
+            <td>Your Balance</td>
+            <td class="sub-user-balance">
+              ${{ '%.2f' | format(current_user.balance) }}
             </td>
           </tr>
           <tr>

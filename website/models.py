@@ -82,6 +82,11 @@ class Order(db.Model):
     items = db.relationship('OrderItem', backref='order', lazy=True)
     user = db.relationship("User", back_populates="orders")
 
+    email = db.Column(db.String(150), unique=True)
+    name = db.Column(db.String(150))  
+    address = db.Column(db.String(300))  
+    phone = db.Column(db.String(20))  
+
 class OrderItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     order_id = db.Column(db.Integer, db.ForeignKey('order.id'), nullable=False)
