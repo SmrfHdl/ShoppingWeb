@@ -2,6 +2,15 @@ from flask_login import UserMixin
 from sqlalchemy import event
 from website import db
 
+class User_Checkout(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    email = db.Column(db.String(150), unique=True)
+    password = db.Column(db.String(150))
+    username = db.Column(db.String(150))
+    name = db.Column(db.String(150))  
+    address = db.Column(db.String(300))  
+    phone = db.Column(db.String(20))  
+    balance = db.Column(db.Float, nullable=False, default=100000)
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)

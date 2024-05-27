@@ -31,6 +31,7 @@ def create_app():
     from .contact import contact_bp
     from .pd import pd_bp
     from .products import products_bp
+    from .checkout import checkout_bp
 
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(account_bp, url_prefix='/')
@@ -39,6 +40,7 @@ def create_app():
     app.register_blueprint(contact_bp, url_prefix='/')
     app.register_blueprint(pd_bp, url_prefix='/')
     app.register_blueprint(products_bp, url_prefix='/')
+    app.register_blueprint(checkout_bp, url_prefix='/')
 
     from .models import User, Product, Cart
 
