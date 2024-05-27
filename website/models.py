@@ -38,6 +38,20 @@ class Product(db.Model):
     url = db.Column(db.String(300), nullable=False)
     category = db.Column(db.String(150), nullable=False)
 
+    def __init__(self, name, price, rating, review_count, description, image, category):
+        self.name = name
+        self.price = price
+        self.rating = rating
+        self.review_count = review_count
+        self.description = description
+        self.image = image
+        self.category = category
+        self.url = self.generate_url()
+
+    def generate_url(self):
+        # Generate a URL-friendly version of the product name
+        return f"{self.name.replace(' ', '-').lower()}"
+
 class Cart(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)

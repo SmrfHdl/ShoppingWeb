@@ -124,7 +124,9 @@
             <span class="quantity-display">{{ item.quantity }}</span>
           </td>
           <td class="size">{{item.size}}</td>
-          <td class="subtotal">${{item.product.price * item.quantity}}</td>
+          <td class="subtotal">
+            ${{ '%.2f' | format(item.product.price * item.quantity) }}
+          </td>
         </tr>
         {% endfor %}
       </table>
@@ -133,7 +135,9 @@
         <table>
           <tr>
             <td>Total</td>
-            <td class="subtotal-price">${{cart.total_price}}</td>
+            <td class="subtotal-price">
+              ${{ '%.2f' | format(cart.total_price) }}
+            </td>
           </tr>
           <tr>
             <td></td>

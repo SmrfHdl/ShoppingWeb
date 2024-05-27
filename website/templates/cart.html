@@ -67,7 +67,7 @@
             <div>
               <p>{{item.product.name}}</p>
               <small class="product-price"
-                >Price: ${{item.product.price}}</small
+                >Price: ${{ '%.2f' | format(item.product.price) }}</small
               ><br />
               <a href="#" class="remove-btn">Remove</a>
             </div>
@@ -82,7 +82,7 @@
           />
         </td>
         <td class="size">{{item.size}}</td>
-        <td class="subtotal">${{item.product.price * item.quantity}}</td>
+        <td class="subtotal">${{ '%.2f' | format(item.product.price * item.quantity) }}</td>
       </tr>
       {% endfor %}
     </table>
@@ -91,11 +91,11 @@
       <table>
         <tr>
           <td>Total</td>
-          <td class="subtotal-price">${{cart.total_price}}</td>
+          <td class="subtotal-price">${{ '%.2f' | format(cart.total_price) }}</td>
         </tr>
         <tr>
           <td>
-            <a href="" class="btn">Payment</a>
+            <a href="{{ url_for('checkout.checkout') }}" class="btn">Payment</a>
           </td>
         </tr>
       </table>

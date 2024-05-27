@@ -9,11 +9,8 @@ products_bp = Blueprint('products', __name__)
 
 def home():
     data = pd.read_csv('Data/final_data.csv')
-    # max_id = db.session.query(db.func.max(Product.id)).scalar() or 0
     if Product.query.count() == 0:
         for index, row in data.iterrows():
-            # existing_product = Product.query.filter_by(name=row['Title'], price=row['Price']).first() 
-            # if existing_product is None:
             product_ = Product(
                 id = index + 1,
                 name=row['Title'],
@@ -22,7 +19,6 @@ def home():
                 review_count=row['Review Count'],
                 description=row['Description'],
                 image=row['Image_url'],
-                url=row['Url'],
                 category=row['Department']
             )
             db.session.add(product_)
