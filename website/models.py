@@ -24,6 +24,9 @@ class User(db.Model, UserMixin):
 
     orders = db.relationship("Order", back_populates="user")
 
+    cart_id = db.Column(db.Integer, db.ForeignKey('cart.id'), nullable=True)
+    cart = db.relationship('Cart', backref=db.backref('users', lazy=True), foreign_keys=[cart_id])
+
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(300), nullable=False)
