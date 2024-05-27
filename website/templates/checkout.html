@@ -1,115 +1,174 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width-device-width, initial-scale=1.0" />
     <title>Checkout - AWS</title>
-    <link rel="stylesheet" href="../static/style.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
+    <link rel="stylesheet" href="../static/style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <div class="navbar">
-            <div class="logo">
-                <a href="{{ url_for('views.home') }}"><img src="../static/images/logo.png" width="125px"></a>
-            </div>
-            <nav>
-                <ul id="MenuItems">
-                    <li><a href="{{ url_for('views.home') }}">Home</a></li>
-                    <li><a href="{{ url_for('products.home') }}">Products</a></li>
-                    <li><a href="{{ url_for('about.home') }}">About</a></li>
-                    <li><a href="{{ url_for('contact.home') }}">Contact</a></li>
-                    <li><a href="{{ url_for('account.home') }}">Account</a></li>
-                </ul>
-            </nav>
-            <a href="{{ url_for('cart.home') }}"><img src="../static/images/cart.png" width="30px" height="30px"></a>
-            <img src="../static/images/menu.png" class="menu-icon" onClick="menutoggle()">
+      <div class="navbar">
+        <div class="logo">
+          <a href="{{ url_for('views.home') }}"
+            ><img src="../static/images/logo.png" width="125px"
+          /></a>
         </div>
+        <nav>
+          <ul id="MenuItems">
+            <li><a href="{{ url_for('views.home') }}">Home</a></li>
+            <li><a href="{{ url_for('products.home') }}">Products</a></li>
+            <li><a href="{{ url_for('about.home') }}">About</a></li>
+            <li><a href="{{ url_for('contact.home') }}">Contact</a></li>
+            <li><a href="{{ url_for('account.home') }}">Account</a></li>
+          </ul>
+        </nav>
+        <a href="{{ url_for('cart.home') }}"
+          ><img src="../static/images/cart.png" width="30px" height="30px"
+        /></a>
+        <img
+          src="../static/images/menu.png"
+          class="menu-icon"
+          onClick="menutoggle()"
+        />
+      </div>
     </div>
 
     <div class="small-container checkout-page">
-        <h2>Payment details</h2>
-        <form id="checkout-form" action="{{ url_for('checkout.process') }}" method="POST">
-            <div class="billing-details">
-                <h3>Customer information</h3>
-                <div class="input-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="input-group">
-                    <label for="phone">Phone</label>
-                    <input type="text" id="phone" name="phone" required>
-                </div>
-                <div class="input-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="input-group">
-                    <label for="address">Address</label>
-                    <input type="text" id="address" name="address" required>
-            </div>
+      <h2>Payment details</h2>
+      <form
+        id="checkout-form"
+        action="{{ url_for('checkout.payment') }}"
+        method="POST"
+      >
+        <div class="billing-details">
+          <h3>Customer information</h3>
+          <div class="input-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value="{{ current_user.name if current_user.is_authenticated else '' }}"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <label for="phone">Phone</label>
+            <input
+              type="text"
+              id="phone"
+              name="phone"
+              value="{{ current_user.phone if current_user.is_authenticated else '' }}"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value="{{ current_user.email if current_user.is_authenticated else '' }}"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <label for="address">Address</label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              value="{{ current_user.address if current_user.is_authenticated else '' }}"
+              required
+            />
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Payment</button>
+      </form>
+    </div>
+    <div class="small-container cart-page">
+      <table>
+        <tr>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Size</th>
+          <th>Subtotal</th>
+        </tr>
 
-            <div class="payment-details">
-                <h3>Card information</h3>
-                <div class="input-group">
-                    <label for="card-name">Name on Card</label>
-                    <input type="text" id="card-name" name="card-name" required>
-                </div>
-                <div class="input-group">
-                    <label for="card-number">Card number</label>
-                    <input type="text" id="card-number" name="card-number" required>
-                </div>
-                <div class="input-group">
-                    <label for="exp-month">Expiration month</label>
-                    <input type="text" id="exp-month" name="exp-month" required>
-                </div>
-                <div class="input-group">
-                    <label for="exp-year">Expiration year</label>
-                    <input type="text" id="exp-year" name="exp-year" required>
-                </div>
-                <div class="input-group">
-                    <label for="cvv">CVV</label>
-                    <input type="text" id="cvv" name="cvv" required>
-                </div>
+        {% for item in cart.items %}
+        <tr class="cart-item" data-item-id="{{ item.id }}">
+          <td>
+            <div class="cart-info">
+              <img src="{{item.product.image}}" />
+              <div>
+                <p>{{item.product.name}}</p>
+                <small class="product-price"
+                  >Price: ${{item.product.price}}</small
+                ><br />
+                <a href="#" class="remove-btn">Remove</a>
+              </div>
             </div>
+          </td>
+          <td>
+            <span class="quantity-display">{{ item.quantity }}</span>
+          </td>
+          <td class="size">{{item.size}}</td>
+          <td class="subtotal">${{item.product.price * item.quantity}}</td>
+        </tr>
+        {% endfor %}
+      </table>
 
-            <button type="submit" class="btn">Payment</button>
-        </form>
+      <div class="total-price">
+        <table>
+          <tr>
+            <td>Total</td>
+            <td class="subtotal-price">${{cart.total_price}}</td>
+          </tr>
+          <tr>
+            <td></td>
+          </tr>
+        </table>
+      </div>
     </div>
 
     <!----------------------------------script for form submission-------------------------------------->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const checkoutForm = document.getElementById('checkout-form');
+    <!-- <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const checkoutForm = document.getElementById("checkout-form");
 
-            checkoutForm.addEventListener('submit', function(event) {
-                event.preventDefault(); // Prevent default form submission
+        checkoutForm.addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent default form submission
 
-                // Normally, you would send the form data to the server here.
-                // Simulate successful form submission and redirect to confirmation page
-                window.location.href = "confirmation.html";
-            });
+          // Normally, you would send the form data to the server here.
+          // Simulate successful form submission and redirect to confirmation page
+          window.location.href = "confirmation.html";
         });
-    </script>
+      });
+    </script> -->
 
     <!-----------------------------------js for toggle menu------------------------------------------------>
     <script>
-        var menuItems=document.getElementById("MenuItems");
-        
-        MenuItems.style.maxHeight="0px";
-        function menutoggle(){
-            if(MenuItems.style.maxHeight == "0px"){
-                MenuItems.style.maxHeight="200px";
-            }
-            else{
-                MenuItems.style.maxHeight="0px";
-            }
-        }
-    </script>
-</body>
+      var menuItems = document.getElementById("MenuItems");
 
+      MenuItems.style.maxHeight = "0px";
+      function menutoggle() {
+        if (MenuItems.style.maxHeight == "0px") {
+          MenuItems.style.maxHeight = "200px";
+        } else {
+          MenuItems.style.maxHeight = "0px";
+        }
+      }
+    </script>
+  </body>
 </html>
