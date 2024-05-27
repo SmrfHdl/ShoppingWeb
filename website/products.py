@@ -11,16 +11,17 @@ def home():
     data = pd.read_csv('Data/final_data.csv')
     if Product.query.count() == 0:
         for index, row in data.iterrows():
-            product_ = Product(
-                id = index + 1,
-                name=row['Title'],
-                price=row['Price'],
-                rating=row['Rating'],
-                review_count=row['Review Count'],
-                description=row['Description'],
-                image=row['Image_url'],
-                category=row['Department']
-            )
+            # product_ = Product(
+            #     id = index + 1,
+            #     name=row['Title'],
+            #     price=row['Price'],
+            #     rating=row['Rating'],
+            #     review_count=row['Review Count'],
+            #     description=row['Description'],
+            #     image=row['Image_url'],
+            #     category=row['Department']
+            # )
+            product_ = Product.create_product(row['Title'], row['Price'], row['Rating'], row['Review Count'], row['Description'], row['Image_url'], row['Department'] )
             db.session.add(product_)
         db.session.commit()
 

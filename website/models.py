@@ -38,19 +38,23 @@ class Product(db.Model):
     url = db.Column(db.String(300), nullable=False)
     category = db.Column(db.String(150), nullable=False)
 
-    def __init__(self, name, price, rating, review_count, description, image, category):
-        self.name = name
-        self.price = price
-        self.rating = rating
-        self.review_count = review_count
-        self.description = description
-        self.image = image
-        self.category = category
-        self.url = self.generate_url()
-
     def generate_url(self):
         # Generate a URL-friendly version of the product name
         return f"{self.name.replace(' ', '-').lower()}"
+
+    @staticmethod
+    def create_product(name, price, rating, review_count, description, image, category):
+        product = Product(
+            name=name,
+            price=price,
+            rating=rating,
+            review_count=review_count,
+            description=description,
+            image=image,
+            category=category
+        )
+        product.url = product.generate_url()
+        return product
 
 class Cart(db.Model):
     id = db.Column(db.Integer, primary_key=True)
