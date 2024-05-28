@@ -3,7 +3,7 @@
 |-----------------|----------|------------------------------------------------------------------------------------------------------------------------------|
 | Đỗ Quang Dũng   | 22022561 |Thiết kế hệ thống đề xuất với content-based và collaborative filtering, crawl data, hỗ trợ thiết kế database                  |
 | Lê Trung Hiếu   |          |                                                                                                                              |
-| Trần An Thắng   |          |                                                                                                                              |
+| Trần An Thắng   | 22022525 |Backend về Sản phẩm và Thanh toán : Thêm vào giỏ hàng, Đặt hàng, Thanh toán                                                   |
 | Phạm Văn Trường |          |                                                                                                                              |  
   
 Link youtube demo dự án: https://youtu.be/NWRkG0gCdUw
