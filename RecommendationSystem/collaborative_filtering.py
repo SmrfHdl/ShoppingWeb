@@ -172,3 +172,10 @@ class CF(object):
 #test.fit()
 #res = test.CF_get_Rcm_Product(10, 10)  # lấy 10 sản phẩm được đề xuất cho user thứ 10 trong db
 #print(res)
+def get_rcm_product(number_of_user, top_product):
+    data = RecommendationSystem.CBCF_function.get_CF_data("instance\database.db")
+    test = CF(data,5)
+    test.fit()
+    res = test.CF_get_Rcm_Product(number_of_user, top_product)
+    res = res.values.tolist()
+    return res

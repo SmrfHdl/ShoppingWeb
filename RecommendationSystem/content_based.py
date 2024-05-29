@@ -58,5 +58,9 @@ class CB(object):
 def get_recommendations(name,number_of_product):
     test = CB()
     test.fit()
-    rcm_prodcut = test.CB_get_Rcm_Product(name,number_of_product)
-    return rcm_prodcut
+    rcm_product = test.CB_get_Rcm_Product(name,number_of_product)
+    rcm_product = rcm_product.values.tolist()
+    return rcm_product
+
+res = get_recommendations("Under Armour Men's UA Tech™ Graphic Shorts",4)
+print(res)
