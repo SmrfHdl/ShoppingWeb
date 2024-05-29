@@ -4,7 +4,7 @@
 | Đỗ Quang Dũng   | 22022561 |Thiết kế hệ thống đề xuất với content-based và collaborative filtering, crawl data, hỗ trợ thiết kế database                  |
 | Lê Trung Hiếu   |          |                                                                                                                              |
 | Trần An Thắng   | 22022525 |Backend về Sản phẩm và Thanh toán : Thêm vào giỏ hàng, Đặt hàng, Thanh toán                                                   |
-| Phạm Văn Trường |          |                                                                                                                              |  
+| Phạm Văn Trường | 22022564         | Thiết kế hệ thống backend (Sản phẩm, Người dùng, Admin panel, ...), tạo Dockerfile                                                                                                                             |  
   
 Link youtube demo dự án: https://youtu.be/NWRkG0gCdUw
 
@@ -22,10 +22,15 @@ Website bán hàng đồ thể thao của chúng tôi được xây dựng nhằ
 - Tài khoản cá nhân
 
 ## Cài đặt
+  1. Không sử dụng Docker:
   - Clone repo
   - Cài đặt các thư viện cần thiết bằng lệnh: `pip install -r require. txt`
   - Chạy file main.py
   - Truy cập địa chỉ `http://127.0.0.1:5000/`
+  2. Sử dụng Docker:
+  - Clone repo
+  - Command: docker build -t <name of docker image> .
+  - Run docker container
  
   ## Công nghệ sử dụng
-  - HTML, CSS
+  - HTML, CSS, JS, Flask Python, SQLite, Docker
