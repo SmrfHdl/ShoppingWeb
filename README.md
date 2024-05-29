@@ -29,7 +29,7 @@ Website bán hàng đồ thể thao của chúng tôi được xây dựng nhằ
   - Truy cập địa chỉ `http://127.0.0.1:5000/`
   2. Sử dụng Docker:
   - Clone repo
-  - Command: docker build -t <name of docker image> .
+  - Command: docker build -t &lt;name of docker image> .
   - Run docker container
  
   ## Công nghệ sử dụng
