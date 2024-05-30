@@ -13,13 +13,14 @@ def home(product_url):
         print("Product not found")
         abort(404)  # Trả về lỗi 404 nếu không tìm thấy sản phẩm
     print("Get product information successfully")
-    print(product.name)
 
     number_of_recommended_products = 4
-    rcm_products = RecommendationSystem.content_based.get_recommendations(product.name,number_of_recommended_products)
-    print(rcm_products[0][0])
+    # rcm_products = RecommendationSystem.content_based.get_recommendations(product.name,number_of_recommended_products)
+    # for rcm_product in rcm_products:
+    #     print(rcm_product[0])
+    # Lấy 4 sản phẩm cùng danh mục
+    rcm_products = Product.query.filter_by(category=product.category).filter(Product.id != product.id).limit(4).all()
     return render_template("products-details.html", product=product, rcm_products=rcm_products)
-    #return render_template("products-details.html", product=product)
 
 @pd_bp.route('/add_to_cart/<int:product_id>', methods=['POST'])
 def add_to_cart(product_id):
