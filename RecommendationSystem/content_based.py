@@ -32,7 +32,7 @@ class CB(object):
             sim_scores = list(enumerate(self.cosine_sim[idx]))
     
     # Sắp xếp sim_scores dựa trên giá trị đơn lẻ có thể so sánh được
-            sim_scores = sorted(sim_scores, key=lambda x: x[0], reverse=True)
+            sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
             sim_scores = sim_scores[1:top_x + 1]
             product_indices = [i[0] for i in sim_scores]
             return titles.iloc[product_indices].values

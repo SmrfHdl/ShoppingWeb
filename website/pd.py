@@ -3,7 +3,7 @@ from website.models import Product, Cart, CartItem
 from flask_login import current_user
 from website import db
 from sqlalchemy.sql.expression import func
-import RecommendationSystem.content_based 
+import RecommendationSystem.content_based as RCM_content_based
 
 pd_bp = Blueprint('pd', __name__)
 
@@ -16,14 +16,17 @@ def home(product_url):
     print("Get product information successfully")
 
     number_of_recommended_products = 4
-    # rcm_products = RecommendationSystem.content_based.get_recommendations(product.name,number_of_recommended_products)
-    # for rcm_product in rcm_products:
-    #     print(rcm_product[0])
-    rcm_products = Product.query.filter_by(category=product.category)\
-                                .filter(Product.id != product.id)\
-                                .order_by(func.random())\
-                                .limit(number_of_recommended_products)\
-                                .all()
+    # rcm_products = Product.query.filter_by(category=product.category)\
+    #                             .filter(Product.id != product.id)\
+    #                             .order_by(func.random())\
+    #                             .limit(number_of_recommended_products)\
+    #                             .all()
+    # Giả sử bạn có hàm get_recommended_product_ids trả về danh sách các ID sản phẩm đề xuất
+    recommended_ids = RCM_content_based.get_recommendations(product.name, number_of_recommended_products)
+    
+    # Lấy các sản phẩm từ danh sách ID đề xuất
+    rcm_products = Product.query.filter(Product.id.in_(recommended_ids)).all()
+    
     return render_template("products-details.html", product=product, rcm_products=rcm_products)
 
 @pd_bp.route('/add_to_cart/<int:product_id>', methods=['POST'])
