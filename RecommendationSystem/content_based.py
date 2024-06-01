@@ -59,8 +59,6 @@ def get_recommendations(name,number_of_product):
     test = CB()
     test.fit()
     rcm_product = test.CB_get_Rcm_Product(name,number_of_product)
-    rcm_product = rcm_product.values.tolist()
-    return rcm_product
-
-res = get_recommendations("Under Armour Men's UA Tech™ Graphic Shorts",4)
-print(res)
+    res = rcm_product['id']
+    res = res.values.tolist()
+    return res

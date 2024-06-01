@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash,
 from website.models import Product, Cart, CartItem
 from flask_login import current_user
 from website import db
+from sqlalchemy.sql.expression import func
 import RecommendationSystem.content_based 
 
 pd_bp = Blueprint('pd', __name__)
@@ -18,8 +19,11 @@ def home(product_url):
     # rcm_products = RecommendationSystem.content_based.get_recommendations(product.name,number_of_recommended_products)
     # for rcm_product in rcm_products:
     #     print(rcm_product[0])
-    # Lấy 4 sản phẩm cùng danh mục
-    rcm_products = Product.query.filter_by(category=product.category).filter(Product.id != product.id).limit(4).all()
+    rcm_products = Product.query.filter_by(category=product.category)\
+                                .filter(Product.id != product.id)\
+                                .order_by(func.random())\
+                                .limit(number_of_recommended_products)\
+                                .all()
     return render_template("products-details.html", product=product, rcm_products=rcm_products)
 
 @pd_bp.route('/add_to_cart/<int:product_id>', methods=['POST'])

@@ -110,7 +110,7 @@
     <div class="small-container">
       <div class="row">
         {% for rcm_product in rcm_products %}
-        <div class="col-4">
+        <div class="col-4 product-item">
           <a href="{{ url_for('pd.home', product_url=rcm_product.url) }}"
             ><img src="{{ rcm_product.image }}"
           /></a>
