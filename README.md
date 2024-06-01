@@ -2,7 +2,7 @@
 | Thành viên      | MSV      | Phân công công việc                                                                                                          |
 |-----------------|----------|------------------------------------------------------------------------------------------------------------------------------|
 | Đỗ Quang Dũng   | 22022561 |Thiết kế hệ thống đề xuất với content-based và collaborative filtering, crawl data, hỗ trợ thiết kế database                  |
-| Lê Trung Hiếu   |          |                                                                                                                              |
+| Lê Trung Hiếu   | 22022576 | Frontend, giao diện người dùng                                                                                                                              |
 | Trần An Thắng   | 22022525 |Backend về Sản phẩm và Thanh toán : Thêm vào giỏ hàng, Đặt hàng, Thanh toán                                                   |
 | Phạm Văn Trường | 22022564         | Thiết kế hệ thống backend (Sản phẩm, Người dùng, Admin panel, ...), tạo Dockerfile                                                                                                                             |  
   
